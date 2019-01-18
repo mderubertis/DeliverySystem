@@ -27,6 +27,19 @@ public class User {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "accessLvl='" + accessLvl + '\'' +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+
     public String getAccessLvl() {
         return accessLvl;
     }

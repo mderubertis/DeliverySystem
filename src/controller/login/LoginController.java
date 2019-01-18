@@ -1,14 +1,21 @@
 package controller.login;
 
-import model.LoginModel;
+import model.users.Users;
 
 /**
- * Created by mderubertis on 2019-01-17.
+ * Delivery System
+ *
+ * @author Michael De Rubertis <m.derubertis@hotmail.com>
+ * @version 1.0
+ * @date 2019-01-17
  */
-public class LoginController {
-    private LoginModel model = new LoginModel();
 
-    public LoginController(LoginModel model) {
+public class LoginController {
+    Users model = new Users();
+    //LoginView view;
+
+    public LoginController(Users model) {
         this.model = model;
+        //this.view = view;
     }
 }

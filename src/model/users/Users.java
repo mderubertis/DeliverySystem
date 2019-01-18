@@ -13,9 +13,7 @@ import java.util.ArrayList;
 public class Users {
     private ArrayList<User> users;
 
-    public Users(ArrayList<User> users) {
-        this.users = users;
-    }
+    public Users() { this.users = new ArrayList<>(); }
 
     public ArrayList<User> getUsers() {
         return users;
@@ -31,6 +29,17 @@ public class Users {
 
     public User getUser(int user) {
         return this.users.get(user);
+    }
+
+    public User getUser(String username) {
+        int index = 0;
+
+        for (User user : this.users) {
+            if (user.getUsername() == username)
+                index = this.users.indexOf(user);
+        }
+
+        return this.users.get(index);
     }
 
     public void editUser(int user, User newUser) {
