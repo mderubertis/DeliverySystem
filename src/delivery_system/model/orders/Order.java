@@ -1,4 +1,4 @@
-package model.orders;
+package delivery_system.model.orders;
 
 /**
  * Delivery System

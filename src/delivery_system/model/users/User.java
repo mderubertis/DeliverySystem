@@ -1,4 +1,4 @@
-package model.users;
+package delivery_system.model.users;
 
 /**
  * Delivery System

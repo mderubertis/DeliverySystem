@@ -1,7 +1,11 @@
-import controller.main.AdminController;
-import model.users.User;
-import model.users.Users;
-import views.AdminView;
+package delivery_system;
+
+import delivery_system.controller.main.AdminController;
+import delivery_system.model.users.User;
+import delivery_system.model.users.Users;
+import delivery_system.views.AdminView;
+
+import javax.swing.*;
 
 /**
  * Delivery System
@@ -18,7 +22,7 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        // Create initial users model
+        // Create initial users delivery_system.model
         Users users = new Users();
 
         // Add default users
@@ -38,5 +42,9 @@ public class Main {
         }
 
 
+    }
+
+    public static void shutdown() {
+        int response = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
     }
 }

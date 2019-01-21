@@ -1,4 +1,4 @@
-package model.menu;
+package delivery_system.model.menu;
 
 /**
  * Delivery System

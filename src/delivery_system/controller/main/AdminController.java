@@ -1,10 +1,13 @@
-package controller.main;
+package delivery_system.controller.main;
 
-import model.users.User;
-import model.users.Users;
-import views.AdminView;
+import delivery_system.Main;
+import delivery_system.model.users.User;
+import delivery_system.model.users.Users;
+import delivery_system.views.AdminView;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Delivery System
@@ -13,7 +16,7 @@ import javax.swing.*;
  * @version 1.0
  * @date 2019-01-21
  */
-public class AdminController {
+public class AdminController implements ActionListener {
     Users model = new Users();
     AdminView view;
 
@@ -39,6 +42,7 @@ public class AdminController {
         mnFile.add(mntmDisconnect);
 
         JMenuItem mntmQuit = new JMenuItem("Quit");
+        mntmQuit.addActionListener(this);
         mnFile.add(mntmQuit);
 
         JMenu mnRestaurant = new JMenu("Restaurant");
@@ -76,5 +80,18 @@ public class AdminController {
 
         JMenuItem mntmDelete_DM = new JMenuItem("Delete");
         mnDelivery.add(mntmDelete_DM);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().getClass().getSimpleName().equals("JMenuItem")) {
+            JMenuItem menuItem = (JMenuItem) e.getSource();
+
+            switch (menuItem.getText()) {
+                case "Quit":
+                    Main.shutdown();
+                    break;
+            }
+        }
     }
 }

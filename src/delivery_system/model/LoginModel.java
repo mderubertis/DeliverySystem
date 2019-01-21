@@ -1,7 +1,7 @@
-package model;
+package delivery_system.model;
 
-import model.users.User;
-import model.users.Users;
+import delivery_system.model.users.User;
+import delivery_system.model.users.Users;
 
 import java.util.ArrayList;
 

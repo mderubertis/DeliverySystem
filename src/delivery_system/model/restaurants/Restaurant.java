@@ -1,4 +1,4 @@
-package model.restaurants;
+package delivery_system.model.restaurants;
 
 /**
  * Delivery System
