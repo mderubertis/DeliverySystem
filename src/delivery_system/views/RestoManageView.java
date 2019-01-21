@@ -1,3 +1,5 @@
+package delivery_system.views;
+
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
@@ -15,11 +17,11 @@ import javax.swing.ImageIcon;
  * @date Jan. 21, 2019
  *
  */
-public class RestoManage extends JInternalFrame {
+public class RestoManageView extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RestoManage() {
+	public RestoManageView() {
 		setTitle("Restaurant Management");
 		setIconifiable(true);
 		setMaximizable(true);

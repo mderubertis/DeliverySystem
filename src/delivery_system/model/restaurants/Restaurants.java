@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Restaurants {
     private ArrayList<Restaurant> restaurants;
 
-    public Restaurants(ArrayList<Restaurant> restaurants) {
+    public Restaurants() {
         this.restaurants = restaurants;
     }
 

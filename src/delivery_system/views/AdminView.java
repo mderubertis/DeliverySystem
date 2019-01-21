@@ -1,10 +1,6 @@
 package delivery_system.views;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.JMenuBar;
+import javax.swing.*;
 import java.awt.SystemColor;
 
 /**
@@ -40,7 +36,7 @@ public class AdminView extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 931, 597);
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(SystemColor.control);

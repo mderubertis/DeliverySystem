@@ -1,13 +1,16 @@
 package delivery_system.controller.main;
 
 import delivery_system.Main;
+import delivery_system.controller.resto.RestoMangeController;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
 import delivery_system.views.AdminView;
+import delivery_system.views.RestoManageView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 
 /**
  * Delivery System
@@ -19,6 +22,18 @@ import java.awt.event.ActionListener;
 public class AdminController implements ActionListener {
     Users model = new Users();
     AdminView view;
+
+    private JMenuItem mntmCreate;
+    private JMenuItem mntmEdit;
+    private JMenuItem mntmDelete;
+    private JMenuItem mntmCreate_menu;
+    private JMenuItem mntmEdit_menu;
+    private JMenuItem mntmQuit;
+    private JMenuItem mntmDisconnect;
+    private JMenuItem mntmDelete_menu;
+    private JMenuItem mntmCreate_dm;
+    private JMenuItem mntmEdit_dm;
+    private JMenuItem mntmDelete_dm;
 
     public AdminController(Users model, AdminView view) {
         this.model = model;
@@ -38,48 +53,49 @@ public class AdminController implements ActionListener {
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
-        JMenuItem mntmDisconnect = new JMenuItem("Disconnect");
+        mntmDisconnect = new JMenuItem("Disconnect");
         mnFile.add(mntmDisconnect);
 
-        JMenuItem mntmQuit = new JMenuItem("Quit");
+        mntmQuit = new JMenuItem("Quit");
         mntmQuit.addActionListener(this);
         mnFile.add(mntmQuit);
 
         JMenu mnRestaurant = new JMenu("Restaurant");
         menuBar.add(mnRestaurant);
 
-        JMenuItem mntmCreate = new JMenuItem("Create");
+        mntmCreate = new JMenuItem("Create");
+        mntmCreate.addActionListener(this);
         mnRestaurant.add(mntmCreate);
 
-        JMenuItem mntmEdit = new JMenuItem("Edit");
+        mntmEdit = new JMenuItem("Edit");
         mnRestaurant.add(mntmEdit);
 
-        JMenuItem mntmDelete = new JMenuItem("Delete");
+        mntmDelete = new JMenuItem("Delete");
         mnRestaurant.add(mntmDelete);
 
         JMenu mnMenu = new JMenu("Menu");
         menuBar.add(mnMenu);
 
-        JMenuItem mntmCreate_Menu = new JMenuItem("Create");
-        mnMenu.add(mntmCreate_Menu);
+        mntmCreate_menu = new JMenuItem("Create");
+        mnMenu.add(mntmCreate_menu);
 
-        JMenuItem mntmEdit_Menu = new JMenuItem("Edit");
-        mnMenu.add(mntmEdit_Menu);
+        mntmEdit_menu = new JMenuItem("Edit");
+        mnMenu.add(mntmEdit_menu);
 
-        JMenuItem mntmDelete_Menu = new JMenuItem("Delete");
-        mnMenu.add(mntmDelete_Menu);
+        mntmDelete_menu = new JMenuItem("Delete");
+        mnMenu.add(mntmDelete_menu);
 
         JMenu mnDelivery = new JMenu("Delivery Man");
         menuBar.add(mnDelivery);
 
-        JMenuItem mntmCreate_DM = new JMenuItem("Create");
-        mnDelivery.add(mntmCreate_DM);
+        mntmCreate_dm = new JMenuItem("Create");
+        mnDelivery.add(mntmCreate_dm);
 
-        JMenuItem mntmEdit_DM = new JMenuItem("Edit");
-        mnDelivery.add(mntmEdit_DM);
+        mntmEdit_dm = new JMenuItem("Edit");
+        mnDelivery.add(mntmEdit_dm);
 
-        JMenuItem mntmDelete_DM = new JMenuItem("Delete");
-        mnDelivery.add(mntmDelete_DM);
+        mntmDelete_dm = new JMenuItem("Delete");
+        mnDelivery.add(mntmDelete_dm);
     }
 
     @Override
@@ -87,10 +103,14 @@ public class AdminController implements ActionListener {
         if (e.getSource().getClass().getSimpleName().equals("JMenuItem")) {
             JMenuItem menuItem = (JMenuItem) e.getSource();
 
-            switch (menuItem.getText()) {
-                case "Quit":
-                    Main.shutdown();
-                    break;
+            if (menuItem == mntmQuit) {
+                Main.shutdown();
+            }
+
+            if (menuItem == mntmCreate) {
+                RestoManageView restoManageView = new RestoManageView();
+                view.getContentPane().add(restoManageView);
+                RestoMangeController restoMangeController = new RestoMangeController(Main.getRestaurants(), restoManageView);
             }
         }
     }

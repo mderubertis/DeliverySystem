@@ -1,6 +1,7 @@
 package delivery_system;
 
 import delivery_system.controller.main.AdminController;
+import delivery_system.model.restaurants.Restaurants;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
 import delivery_system.views.AdminView;
@@ -16,6 +17,10 @@ import javax.swing.*;
  */
 
 public class Main {
+
+    private static Users users;
+    private static Restaurants restaurants;
+
     /**
      * The entry point of application.
      *
@@ -23,7 +28,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // Create initial users delivery_system.model
-        Users users = new Users();
+        users = new Users();
+        restaurants = new Restaurants();
 
         // Add default users
         users.addUser(new User("administrator", "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
@@ -40,11 +46,21 @@ public class Main {
                 AdminController adminController = new AdminController(users, adminView);
                 break;
         }
-
-
     }
 
     public static void shutdown() {
         int response = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
+
+        if (response == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
+
+    public static Users getUsers() {
+        return users;
+    }
+
+    public static Restaurants getRestaurants() {
+        return restaurants;
     }
 }
