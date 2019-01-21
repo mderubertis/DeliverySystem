@@ -1,6 +1,8 @@
+import controller.login.AdminController;
 import controller.login.LoginController;
 import model.users.User;
 import model.users.Users;
+import views.AdminView;
 
 import java.util.Arrays;
 
@@ -25,6 +27,14 @@ public class Main {
         // Add default users
         users.addUser(new User("administrator", "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User("manager", "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.setActiveUser(users.getUser("admin"));
+
+        switch (users.getActiveUser().getAccessLvl()) {
+            case "administrator":
+                AdminView adminView = new AdminView();
+                AdminController adminController = new AdminController(users, adminView);
+                break;
+        }
 
         // Testing Users model
 //        for (User user : users.getUsers()) {
@@ -34,6 +44,8 @@ public class Main {
 
         //System.out.println(users.getUser("manager").toString());
 
-        LoginController loginController = new LoginController(users);
+        //LoginController loginController = new LoginController(users);
+
+
     }
 }

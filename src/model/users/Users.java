@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Users {
     private ArrayList<User> users;
+    private User activeUser;
 
     public Users() { this.users = new ArrayList<>(); }
 
@@ -44,5 +45,13 @@ public class Users {
 
     public void editUser(int user, User newUser) {
         this.users.set(user, newUser);
+    }
+
+    public void setActiveUser(User activeUser) {
+        this.activeUser = activeUser;
+    }
+
+    public User getActiveUser() {
+        return activeUser;
     }
 }
