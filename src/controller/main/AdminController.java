@@ -1,4 +1,4 @@
-package controller.login;
+package controller.main;
 
 import model.users.User;
 import model.users.Users;

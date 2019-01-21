@@ -1,10 +1,7 @@
-import controller.login.AdminController;
-import controller.login.LoginController;
+import controller.main.AdminController;
 import model.users.User;
 import model.users.Users;
 import views.AdminView;
-
-import java.util.Arrays;
 
 /**
  * Delivery System
@@ -27,24 +24,18 @@ public class Main {
         // Add default users
         users.addUser(new User("administrator", "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User("manager", "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+
+        // Set active user to test admin
+        // Usually done on successful login
         users.setActiveUser(users.getUser("admin"));
 
+        // Launch appropriate Frame based on accessLvl
         switch (users.getActiveUser().getAccessLvl()) {
             case "administrator":
                 AdminView adminView = new AdminView();
                 AdminController adminController = new AdminController(users, adminView);
                 break;
         }
-
-        // Testing Users model
-//        for (User user : users.getUsers()) {
-//            System.out.println(user.toString());
-//            System.out.println((user.getPassword() == "1234" ? "valid" : "invalid"));
-//        }
-
-        //System.out.println(users.getUser("manager").toString());
-
-        //LoginController loginController = new LoginController(users);
 
 
     }
