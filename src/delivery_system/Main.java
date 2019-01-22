@@ -1,10 +1,11 @@
 package delivery_system;
 
-import delivery_system.controller.main.AdminController;
+import delivery_system.controller.main.MainController;
 import delivery_system.model.restaurants.Restaurants;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
-import delivery_system.views.AdminView;
+import delivery_system.views.account.AccountFrame;
+import delivery_system.views.MainView;
 
 import javax.swing.*;
 
@@ -20,6 +21,7 @@ public class Main {
 
     private static Users users;
     private static Restaurants restaurants;
+    private static AccountFrame accountFrame;
 
     /**
      * The entry point of application.
@@ -35,17 +37,8 @@ public class Main {
         users.addUser(new User("administrator", "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User("manager", "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
 
-        // Set active user to test admin
-        // Usually done on successful login
-        users.setActiveUser(users.getUser("admin"));
-
-        // Launch appropriate Frame based on accessLvl
-        switch (users.getActiveUser().getAccessLvl()) {
-            case "administrator":
-                AdminView adminView = new AdminView();
-                AdminController adminController = new AdminController(users, adminView);
-                break;
-        }
+        // Launch account/new user window
+        accountFrame = new AccountFrame(users);
     }
 
     public static void shutdown() {
@@ -54,6 +47,23 @@ public class Main {
         if (response == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
+    }
+
+    public static void login() {
+        // Launch appropriate Frame based on accessLvl
+        if (users.getActiveUser() != null) {
+            MainView mainView = new MainView();
+            MainController mainController = new MainController(users, mainView);
+            accountFrame.dispose();
+        }
+    }
+
+    public static void logout() {
+        // Remove active user
+        users.setActiveUser(null);
+
+        // Launch account/new user window
+        accountFrame = new AccountFrame(users);
     }
 
     public static Users getUsers() {

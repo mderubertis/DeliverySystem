@@ -14,7 +14,7 @@ import java.awt.SystemColor;
  * @date Jan. 21, 2019
  *
  */
-public class AdminView extends JFrame {
+public class MainView extends JFrame {
 
 	private JDesktopPane contentPane;
 	private JMenuBar menuBar;
@@ -27,7 +27,7 @@ public class AdminView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AdminView() {
+	public MainView() {
 		setTitle("Delivery System: [USER] (Administrator)");
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

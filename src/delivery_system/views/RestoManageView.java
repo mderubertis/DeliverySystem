@@ -28,6 +28,7 @@ public class RestoManageView extends JInternalFrame {
 		setRootPaneCheckingEnabled(false);
 		setResizable(true);
 		setClosable(true);
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
 	}
 
 }

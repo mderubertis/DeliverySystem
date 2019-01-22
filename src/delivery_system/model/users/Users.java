@@ -36,7 +36,7 @@ public class Users {
         int index = 0;
 
         for (User user : this.users) {
-            if (user.getUsername() == username)
+            if (user.getUsername().equals(username))
                 index = this.users.indexOf(user);
         }
 

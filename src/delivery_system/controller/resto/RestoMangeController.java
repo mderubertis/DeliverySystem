@@ -19,13 +19,10 @@ public class RestoMangeController {
     public RestoMangeController(Restaurants model, RestoManageView view) {
         this.model = model;
         this.view = view;
+    }
 
-        view.setVisible(true);
-
-        try {
-            view.setMaximum(true);
-        } catch (PropertyVetoException e1) {
-            e1.printStackTrace();
-        }
+    public void showView() {
+        this.view.setSize(400, 400);
+        this.view.setVisible(true);
     }
 }

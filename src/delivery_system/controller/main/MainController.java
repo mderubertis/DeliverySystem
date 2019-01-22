@@ -4,13 +4,12 @@ import delivery_system.Main;
 import delivery_system.controller.resto.RestoMangeController;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
-import delivery_system.views.AdminView;
+import delivery_system.views.MainView;
 import delivery_system.views.RestoManageView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyVetoException;
 
 /**
  * Delivery System
@@ -19,9 +18,9 @@ import java.beans.PropertyVetoException;
  * @version 1.0
  * @date 2019-01-21
  */
-public class AdminController implements ActionListener {
+public class MainController implements ActionListener {
     Users model = new Users();
-    AdminView view;
+    MainView view;
 
     private JMenuItem mntmCreate;
     private JMenuItem mntmEdit;
@@ -34,31 +33,52 @@ public class AdminController implements ActionListener {
     private JMenuItem mntmCreate_dm;
     private JMenuItem mntmEdit_dm;
     private JMenuItem mntmDelete_dm;
+    private final RestoManageView restoManageView;
+    private final RestoMangeController restoMangeController;
+    private final JMenuBar menuBar;
 
-    public AdminController(Users model, AdminView view) {
+    public MainController(Users model, MainView view) {
         this.model = model;
         this.view = view;
 
+        // Set title with user info
         User activeUser = model.getActiveUser();
-
         view.setTitle("Delivery System - [" + activeUser.getUsername() + "] (" + activeUser.getAccessLvl() + ")");
-        setupMenuBar();
-        view.setVisible(true);
-    }
 
-    public void setupMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
+        // Setup menubar based on permissions
+        menuBar = new JMenuBar();
         view.setJMenuBar(menuBar);
 
         JMenu mnFile = new JMenu("File");
         menuBar.add(mnFile);
 
         mntmDisconnect = new JMenuItem("Disconnect");
+        mntmDisconnect.addActionListener(this);
         mnFile.add(mntmDisconnect);
 
         mntmQuit = new JMenuItem("Quit");
         mntmQuit.addActionListener(this);
         mnFile.add(mntmQuit);
+
+        switch (activeUser.getAccessLvl()) {
+            case "administrator":
+                setupAdminMenuBar();
+                break;
+            case "manager":
+                break;
+        }
+
+        // Create child views but hidden, and visible on menu item click
+        restoManageView = new RestoManageView();
+        restoMangeController = new RestoMangeController(Main.getRestaurants(), restoManageView);
+        view.getContentPane().add(restoManageView);
+
+        // View setup
+        view.setVisible(true);
+    }
+
+    public void setupAdminMenuBar() {
+        ;
 
         JMenu mnRestaurant = new JMenu("Restaurant");
         menuBar.add(mnRestaurant);
@@ -68,9 +88,11 @@ public class AdminController implements ActionListener {
         mnRestaurant.add(mntmCreate);
 
         mntmEdit = new JMenuItem("Edit");
+        mntmEdit.addActionListener(this);
         mnRestaurant.add(mntmEdit);
 
         mntmDelete = new JMenuItem("Delete");
+        mntmDelete.addActionListener(this);
         mnRestaurant.add(mntmDelete);
 
         JMenu mnMenu = new JMenu("Menu");
@@ -103,15 +125,20 @@ public class AdminController implements ActionListener {
         if (e.getSource().getClass().getSimpleName().equals("JMenuItem")) {
             JMenuItem menuItem = (JMenuItem) e.getSource();
 
+            if (menuItem == mntmDisconnect) {
+                Main.logout();
+                view.dispose();
+            }
+
             if (menuItem == mntmQuit) {
                 Main.shutdown();
             }
 
-            if (menuItem == mntmCreate) {
-                RestoManageView restoManageView = new RestoManageView();
-                view.getContentPane().add(restoManageView);
-                RestoMangeController restoMangeController = new RestoMangeController(Main.getRestaurants(), restoManageView);
+            if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete) {
+                restoMangeController.showView();
             }
+
+
         }
     }
 }
