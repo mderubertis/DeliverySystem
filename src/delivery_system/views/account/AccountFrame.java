@@ -29,7 +29,6 @@ public class AccountFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-        frame.setType(Window.Type.UTILITY);
         frame.setResizable(false);
 		frame.setTitle("User Authentication");
 		frame.setBounds(100, 100, 895, 689);
@@ -46,7 +45,7 @@ public class AccountFrame {
 		});
 		frame.add(loginView, BorderLayout.CENTER);
 		frame.setVisible(true);
-		
+
 		JRootPane rootPane = SwingUtilities.getRootPane(loginView);
         rootPane.setDefaultButton(loginView.getBtnConnect());
 }

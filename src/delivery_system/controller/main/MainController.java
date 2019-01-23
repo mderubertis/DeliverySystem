@@ -21,7 +21,6 @@ import java.awt.event.ActionListener;
  * @date 2019-01-21
  */
 public class MainController implements ActionListener {
-    private final JMenuItem mntmAbout;
     Users model = new Users();
     MainView view;
 
@@ -84,20 +83,13 @@ public class MainController implements ActionListener {
                 break;
         }
 
-        JMenu mnAbout = new JMenu("Help");
-        menuBar.add(mnAbout);
-
-        mntmAbout = new JMenuItem("About");
-        mnAbout.addActionListener(this);
-        mnAbout.add(mntmAbout);
-
         // Create child views but hidden, and visible on menu item click
         restoManageView = new RestoManageView();
         restoMangeController = new RestoMangeController(Main.getRestaurants(), restoManageView);
         view.getContentPane().add(restoManageView);
 
         // View setup
-        view.setTitle("Delivery System - [" + activeUser.getUsername() + "] (" + role_readable + ")");
+        view.setTitle("Food Delivery System - [Logged in as " + activeUser.getUsername() + "] (" + role_readable + ")");
         view.setVisible(true);
     }
 
@@ -207,11 +199,6 @@ public class MainController implements ActionListener {
 
             if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete) {
                 restoMangeController.showView();
-            }
-
-            if (menuItem == mntmAbout) {
-                JDialog aboutView = new AboutView();
-                aboutView.setVisible(true);
             }
 
         }

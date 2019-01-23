@@ -8,6 +8,7 @@ import delivery_system.views.account.LoginView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * Delivery System
@@ -33,12 +34,15 @@ public class LoginController {
                         model.setActiveUser(user);
                         Main.login();
                     } else {
-                        JOptionPane.showMessageDialog(view, "Invalid username or password", "Login Error",
+                        JOptionPane.showMessageDialog(view, "Invalid password", "Login Error",
                                 JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(view, "Invalid username or password", "Login Error",
+                } catch (NullPointerException npe) {
+                    System.err.println(npe.getMessage());
+                    JOptionPane.showMessageDialog(view, "Invalid username", "Login Error",
                             JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }

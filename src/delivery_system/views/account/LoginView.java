@@ -87,7 +87,7 @@ public class LoginView extends JPanel {
         panel_4.setPreferredSize(new Dimension(10, 40));
         panel_2.add(panel_4, BorderLayout.NORTH);
 
-        JLabel lblUsername = new JLabel("UserName: ");
+        JLabel lblUsername = new JLabel("Username: ");
         panel_4.add(lblUsername);
 
         txtUsername = new JTextField();
