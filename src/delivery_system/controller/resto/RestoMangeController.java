@@ -6,7 +6,7 @@ import delivery_system.views.RestoManageView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyVetoException;
+import java.net.URL;
 
 /**
  * Delivery System
@@ -23,6 +23,17 @@ public class RestoMangeController {
     public RestoMangeController(Restaurants model, RestoManageView view) {
         this.model = model;
         this.view = view;
+
+        try {
+            URL iconURL = getClass().getResource("/delivery_system/assets/icons8-maintenance-48.png");
+            view.setFrameIcon(new ImageIcon(iconURL));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        JScrollPane scrPane = new JScrollPane(this.view.getPanel_16(), ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        this.view.getContentPane().add(scrPane);
+        this.view.setSize(600, 400);
     }
 
     public boolean isEdit() {
@@ -67,10 +78,6 @@ public class RestoMangeController {
 
             }
         });
-
-        JScrollPane scrPane = new JScrollPane(this.view.getPanel_16());
-        this.view.getContentPane().add(scrPane);
-        this.view.setSize(400, 400);
         this.view.setVisible(true);
     }
 }

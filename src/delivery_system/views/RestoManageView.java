@@ -1,9 +1,11 @@
 package delivery_system.views;
 
 import java.awt.*;
+import java.text.ParseException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 /**
  * 
@@ -60,6 +62,8 @@ public class RestoManageView extends JInternalFrame {
     private JComboBox comboBox_13;
     private final JButton btnSave;
     private final JPanel panel_16;
+    private MaskFormatter tel;
+    private MaskFormatter tel4;
 
     public JPanel getPanel_16() {
         return panel_16;
@@ -79,7 +83,7 @@ public class RestoManageView extends JInternalFrame {
         setMaximumSize(new Dimension(895, 720));
 
 
-        this.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        //this.getContentPane().setLayout();
 
         String[] hours = new String[13];
         String[] mins = new String[60];
@@ -91,21 +95,19 @@ public class RestoManageView extends JInternalFrame {
             mins[i] = String.valueOf(i);
 
         panel_16 = new JPanel();
-        panel_16.setLayout(new BorderLayout(0, 0));
-
-        JPanel panel = new JPanel();
-        panel_16.add(panel, BorderLayout.NORTH);
-        panel.setPreferredSize(new Dimension(10, 40));
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-        JLabel lblAddNewRestaurant = new JLabel("Add New Restaurant");
-        lblAddNewRestaurant.setFont(new Font("Consolas", Font.BOLD, 30));
-        panel.add(lblAddNewRestaurant);
+        panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
         JPanel panel_3 = new JPanel();
-        panel_16.add(panel_3, BorderLayout.SOUTH);
+        panel_16.add(panel_3, BorderLayout.CENTER);
         panel_3.setBorder(new EmptyBorder(0, 100, 0, 100));
         panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.Y_AXIS));
+
+        JPanel panel_10 = new JPanel();
+        panel_3.add(panel_10);
+
+        JLabel lblAddNewRestaurant = new JLabel("Add New Restaurant");
+        panel_10.add(lblAddNewRestaurant);
+        lblAddNewRestaurant.setFont(new Font("Consolas", Font.BOLD, 30));
 
         JPanel panel_14 = new JPanel();
         panel_3.add(panel_14);
@@ -136,7 +138,14 @@ public class RestoManageView extends JInternalFrame {
         JLabel label_3 = new JLabel("(");
         panel_15.add(label_3);
 
-        textField_2 = new JFormattedTextField();
+        try {
+            tel = new MaskFormatter("###");
+            tel4 = new MaskFormatter("####");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        textField_2 = new JFormattedTextField(tel);
         getTextField_2().setMaximumSize(new Dimension(2147483630, 2147483647));
         getTextField_2().setMargin(new Insets(2, 0, 2, 0));
         getTextField_2().setColumns(3);
@@ -145,14 +154,14 @@ public class RestoManageView extends JInternalFrame {
         JLabel label_4 = new JLabel(")");
         panel_15.add(label_4);
 
-        textField_3 = new JFormattedTextField();
+        textField_3 = new JFormattedTextField(tel);
         getTextField_3().setColumns(3);
         panel_15.add(getTextField_3());
 
         JLabel label_5 = new JLabel("-");
         panel_15.add(label_5);
 
-        textField_4 = new JFormattedTextField();
+        textField_4 = new JFormattedTextField(tel4);
         getTextField_4().setColumns(4);
         panel_15.add(getTextField_4());
 
@@ -180,15 +189,15 @@ public class RestoManageView extends JInternalFrame {
         panel_1.add(panel_5);
         panel_5.setPreferredSize(new Dimension(345, 25));
 
-        JLabel lblNewLabel_1 = new JLabel("Day             ");
+        JLabel lblNewLabel_1 = new JLabel("Day                ");
         lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel_5.add(lblNewLabel_1);
 
-        JLabel lblNewLabel_2 = new JLabel("Openning Time");
+        JLabel lblNewLabel_2 = new JLabel("Opening Time");
         lblNewLabel_2.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel_5.add(lblNewLabel_2);
 
-        JLabel lblNewLabel_3 = new JLabel("                 Closing Time");
+        JLabel lblNewLabel_3 = new JLabel("                    Closing Time");
         lblNewLabel_3.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel_5.add(lblNewLabel_3);
 

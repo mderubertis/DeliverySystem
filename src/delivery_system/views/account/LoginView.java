@@ -1,14 +1,11 @@
 package delivery_system.views.account;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class LoginView extends JPanel {
@@ -49,8 +46,6 @@ public class LoginView extends JPanel {
 		}
         setLayout(new BorderLayout(0, 0));
         JPanel panel = new JPanel();
-        FlowLayout flowLayout_1 = (FlowLayout) panel.getLayout();
-        panel.setPreferredSize(new Dimension(10, 250));
         this.add(panel, BorderLayout.NORTH);
 
         JLabel lblDeliverySystem = new JLabel("Delivery System");
@@ -60,14 +55,12 @@ public class LoginView extends JPanel {
 
         JPanel panel_1 = new JPanel();
         panel_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        panel_1.setPreferredSize(new Dimension(10, 313));
         this.add(panel_1, BorderLayout.SOUTH);
         panel_1.setLayout(new BorderLayout(0, 0));
 
         JPanel panel_3 = new JPanel();
         FlowLayout flowLayout = (FlowLayout) panel_3.getLayout();
         flowLayout.setAlignment(FlowLayout.RIGHT);
-        panel_3.setPreferredSize(new Dimension(10, 45));
         panel_1.add(panel_3, BorderLayout.SOUTH);
 
         btnConnect = new JButton("Connect");
@@ -78,14 +71,15 @@ public class LoginView extends JPanel {
 
         btnQuit = new JButton("Quit");
         panel_3.add(btnQuit);
-
+        
         JPanel panel_2 = new JPanel();
+        panel_2.setBorder(new EmptyBorder(30, 0, 30, 0));
         this.add(panel_2);
-        panel_2.setLayout(new BorderLayout(0, 0));
+        panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 
         JPanel panel_4 = new JPanel();
         panel_4.setPreferredSize(new Dimension(10, 40));
-        panel_2.add(panel_4, BorderLayout.NORTH);
+        panel_2.add(panel_4);
 
         JLabel lblUsername = new JLabel("Username: ");
         panel_4.add(lblUsername);
@@ -96,7 +90,7 @@ public class LoginView extends JPanel {
 
         JPanel panel_5 = new JPanel();
         panel_5.setPreferredSize(new Dimension(10, 40));
-        panel_2.add(panel_5, BorderLayout.SOUTH);
+        panel_2.add(panel_5);
 
         JLabel lblPassword = new JLabel("Password: ");
         panel_5.add(lblPassword);
@@ -104,7 +98,6 @@ public class LoginView extends JPanel {
         pwdPassword = new JPasswordField();
         panel_5.add(pwdPassword);
         pwdPassword.setColumns(10);
-
 
 	}
 

@@ -10,8 +10,12 @@ import delivery_system.views.MainView;
 import delivery_system.views.RestoManageView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.net.URL;
 
 /**
  * Delivery System
@@ -44,6 +48,14 @@ public class MainController implements ActionListener {
     public MainController(Users model, MainView view) {
         this.model = model;
         this.view = view;
+
+        try {
+            URL iconURL = getClass().getResource("/delivery_system/assets/icons8-meal-48.png");
+            ImageIcon icon = new ImageIcon(iconURL);
+            view.setIconImage(icon.getImage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // Set title with user info
         User activeUser = model.getActiveUser();

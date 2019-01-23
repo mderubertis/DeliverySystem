@@ -31,7 +31,7 @@ public class AccountFrame {
 		frame = new JFrame();
         frame.setResizable(false);
 		frame.setTitle("User Authentication");
-		frame.setBounds(100, 100, 895, 689);
+		frame.setBounds(100, 100, 415, 230);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		LoginView loginView = new LoginView();
