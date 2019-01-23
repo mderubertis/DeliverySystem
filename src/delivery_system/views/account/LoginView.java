@@ -25,8 +25,11 @@ public class LoginView extends JPanel {
         return pwdPassword;
     }
 
+    public JButton getBtnNewClient() {
+        return btnNewClient;
+    }
+
     public JButton btnQuit;
-	public JPanel panel_3;
 
 	public JButton getBtnConnect() {
 		return btnConnect;
@@ -101,10 +104,10 @@ public class LoginView extends JPanel {
         pwdPassword = new JPasswordField();
         panel_5.add(pwdPassword);
         pwdPassword.setColumns(10);
+
+
 	}
 
-	public JButton getBtnNewClient() {
-		return btnNewClient;
-	}
+
 
 }

@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  */
 
 /**
- * ProjectGUI
+ * Delivery System
  * 
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @date Jan. 21, 2019

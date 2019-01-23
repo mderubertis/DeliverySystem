@@ -2,6 +2,7 @@ package delivery_system;
 
 import delivery_system.controller.main.MainController;
 import delivery_system.model.restaurants.Restaurants;
+import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
 import delivery_system.views.account.AccountFrame;
@@ -34,8 +35,9 @@ public class Main {
         restaurants = new Restaurants();
 
         // Add default users
-        users.addUser(new User("administrator", "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
-        users.addUser(new User("manager", "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.addUser(new User(Roles.ADMINISTRATOR, "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.addUser(new User(Roles.MANAGER, "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 1", "deli1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
 
         // Launch account/new user window
         accountFrame = new AccountFrame(users);

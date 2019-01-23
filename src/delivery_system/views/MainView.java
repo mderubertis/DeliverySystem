@@ -8,7 +8,7 @@ import java.awt.SystemColor;
  */
 
 /**
- * ProjectGUI
+ * Delivery System
  * 
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @date Jan. 21, 2019

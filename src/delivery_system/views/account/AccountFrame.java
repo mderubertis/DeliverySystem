@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class AccountFrame {
 	private Users users;
@@ -47,6 +46,9 @@ public class AccountFrame {
 		});
 		frame.add(loginView, BorderLayout.CENTER);
 		frame.setVisible(true);
+		
+		JRootPane rootPane = SwingUtilities.getRootPane(loginView);
+        rootPane.setDefaultButton(loginView.getBtnConnect());
 }
 
 

@@ -33,14 +33,11 @@ public class Users {
     }
 
     public User getUser(String username) {
-        int index = 0;
-
         for (User user : this.users) {
             if (user.getUsername().equals(username))
-                index = this.users.indexOf(user);
+                return this.users.get(this.users.indexOf(user));
         }
-
-        return this.users.get(index);
+        return null;
     }
 
     public void editUser(int user, User newUser) {

@@ -2,8 +2,10 @@ package delivery_system.controller.main;
 
 import delivery_system.Main;
 import delivery_system.controller.resto.RestoMangeController;
+import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
+import delivery_system.views.AboutView;
 import delivery_system.views.MainView;
 import delivery_system.views.RestoManageView;
 
@@ -19,9 +21,11 @@ import java.awt.event.ActionListener;
  * @date 2019-01-21
  */
 public class MainController implements ActionListener {
+    private final JMenuItem mntmAbout;
     Users model = new Users();
     MainView view;
 
+    private String role;
     private JMenuItem mntmCreate;
     private JMenuItem mntmEdit;
     private JMenuItem mntmDelete;
@@ -36,6 +40,7 @@ public class MainController implements ActionListener {
     private final RestoManageView restoManageView;
     private final RestoMangeController restoMangeController;
     private final JMenuBar menuBar;
+    private JMenuItem mntmView_orders;
 
     public MainController(Users model, MainView view) {
         this.model = model;
@@ -43,7 +48,6 @@ public class MainController implements ActionListener {
 
         // Set title with user info
         User activeUser = model.getActiveUser();
-        view.setTitle("Delivery System - [" + activeUser.getUsername() + "] (" + activeUser.getAccessLvl() + ")");
 
         // Setup menubar based on permissions
         menuBar = new JMenuBar();
@@ -60,13 +64,32 @@ public class MainController implements ActionListener {
         mntmQuit.addActionListener(this);
         mnFile.add(mntmQuit);
 
+        // Set permissions for frame
+        String role_readable = "";
+        role = activeUser.getAccessLvl();
+
+        // Check permissions and create menu bar
         switch (activeUser.getAccessLvl()) {
-            case "administrator":
+            case Roles.ADMINISTRATOR:
                 setupAdminMenuBar();
+                role_readable = Roles.ADMINISTRATOR;
                 break;
-            case "manager":
+            case Roles.MANAGER:
+                setupManagerMenuBar();
+                role_readable = Roles.MANAGER;
+                break;
+            case Roles.DELIVERY_MAN:
+                setupDeliveryManMenuBar();
+                role_readable = "delivery man";
                 break;
         }
+
+        JMenu mnAbout = new JMenu("Help");
+        menuBar.add(mnAbout);
+
+        mntmAbout = new JMenuItem("About");
+        mnAbout.addActionListener(this);
+        mnAbout.add(mntmAbout);
 
         // Create child views but hidden, and visible on menu item click
         restoManageView = new RestoManageView();
@@ -74,12 +97,11 @@ public class MainController implements ActionListener {
         view.getContentPane().add(restoManageView);
 
         // View setup
+        view.setTitle("Delivery System - [" + activeUser.getUsername() + "] (" + role_readable + ")");
         view.setVisible(true);
     }
 
     public void setupAdminMenuBar() {
-        ;
-
         JMenu mnRestaurant = new JMenu("Restaurant");
         menuBar.add(mnRestaurant);
 
@@ -120,6 +142,55 @@ public class MainController implements ActionListener {
         mnDelivery.add(mntmDelete_dm);
     }
 
+    public void setupDeliveryManMenuBar() {
+        JMenu mnDelivery = new JMenu("Delivery Man");
+        menuBar.add(mnDelivery);
+
+        mntmCreate_dm = new JMenuItem("View");
+        mnDelivery.add(mntmCreate_dm);
+
+        mntmEdit_dm = new JMenuItem("Accept");
+        mnDelivery.add(mntmEdit_dm);
+
+        mntmDelete_dm = new JMenuItem("End");
+        mnDelivery.add(mntmDelete_dm);
+    }
+
+    public void setupManagerMenuBar() {
+        JMenu mnRestaurant = new JMenu("Restaurant");
+        menuBar.add(mnRestaurant);
+
+        mntmCreate = new JMenuItem("Create");
+        mntmCreate.addActionListener(this);
+        mnRestaurant.add(mntmCreate);
+
+        mntmEdit = new JMenuItem("Edit");
+        mntmEdit.addActionListener(this);
+        mnRestaurant.add(mntmEdit);
+
+        mntmDelete = new JMenuItem("Delete");
+        mntmDelete.addActionListener(this);
+        mnRestaurant.add(mntmDelete);
+
+        JMenu mnMenu = new JMenu("Menu");
+        menuBar.add(mnMenu);
+
+        mntmCreate_menu = new JMenuItem("Create");
+        mnMenu.add(mntmCreate_menu);
+
+        mntmEdit_menu = new JMenuItem("Edit");
+        mnMenu.add(mntmEdit_menu);
+
+        mntmDelete_menu = new JMenuItem("Delete");
+        mnMenu.add(mntmDelete_menu);
+
+        JMenu mnOrders = new JMenu("Orders");
+        menuBar.add(mnOrders);
+
+        mntmView_orders = new JMenuItem("View");
+        mnOrders.add(mntmView_orders);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().getClass().getSimpleName().equals("JMenuItem")) {
@@ -138,6 +209,10 @@ public class MainController implements ActionListener {
                 restoMangeController.showView();
             }
 
+            if (menuItem == mntmAbout) {
+                JDialog aboutView = new AboutView();
+                aboutView.setVisible(true);
+            }
 
         }
     }

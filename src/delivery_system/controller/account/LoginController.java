@@ -27,11 +27,16 @@ public class LoginController {
 
         view.getBtnConnect().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                User user = model.getUser(view.getTxtUsername().getText());
-                if (user.getPassword().equals(view.getPwdPassword().getText())) {
-                    model.setActiveUser(user);
-                    Main.login();
-                } else {
+                try {
+                    User user = model.getUser(view.getTxtUsername().getText());
+                    if (user.getPassword().equals(view.getPwdPassword().getText())) {
+                        model.setActiveUser(user);
+                        Main.login();
+                    } else {
+                        JOptionPane.showMessageDialog(view, "Invalid username or password", "Login Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(view, "Invalid username or password", "Login Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
