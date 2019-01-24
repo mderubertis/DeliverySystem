@@ -1,5 +1,7 @@
 package delivery_system.model.restaurants;
 
+import java.util.Arrays;
+
 /**
  * Delivery System
  *
@@ -21,6 +23,17 @@ public class Restaurant {
         this.phone = phone;
         this.hours = hours;
         this.delieveryArea = delieveryArea;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", hours=" + Arrays.toString(hours) +
+                ", delieveryArea=" + Arrays.toString(delieveryArea) +
+                '}';
     }
 
     public String getName() {

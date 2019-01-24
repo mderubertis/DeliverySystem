@@ -37,7 +37,7 @@ public class MainView extends JFrame {
 			e.printStackTrace();
 		}
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setBounds(100, 100, 931, 597);
+		setBounds(100, 100, 960, 720);
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(SystemColor.control);
 

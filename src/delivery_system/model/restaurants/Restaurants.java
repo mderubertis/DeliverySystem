@@ -14,7 +14,7 @@ public class Restaurants {
     private ArrayList<Restaurant> restaurants;
 
     public Restaurants() {
-        this.restaurants = restaurants;
+        this.restaurants = new ArrayList<>();
     }
 
     public ArrayList<Restaurant> getRestaurants() {
@@ -29,11 +29,15 @@ public class Restaurants {
         this.restaurants.remove(restaurant);
     }
 
+    public Restaurant getRestaurant(Restaurant restaurant) {
+        return this.restaurants.get(this.restaurants.indexOf(restaurant));
+    }
+
     public Restaurant getRestaurant(int restaurant) {
         return this.restaurants.get(restaurant);
     }
 
-    public void editRestaurant(int restaurant, Restaurant newRestaurant) {
-        this.restaurants.set(restaurant, newRestaurant);
+    public void editRestaurant(Restaurant restaurant, Restaurant newRestaurant) {
+        this.restaurants.set(this.restaurants.indexOf(restaurant), newRestaurant);
     }
 }

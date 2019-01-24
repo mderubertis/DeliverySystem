@@ -5,6 +5,7 @@ import java.text.ParseException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -19,19 +20,19 @@ import javax.swing.text.MaskFormatter;
  *
  */
 public class RestoManageView extends JInternalFrame {
-    private final JTextField textField;
-    private final JTextField textField_1;
+    private final JTextField txtRestoName;
+    private final JTextField txtRestoAddr;
     private JTextField resname;
     private JTextField resadd;
-    private JFormattedTextField textField_2;
-    private JFormattedTextField textField_3;
-    private JFormattedTextField textField_4;
+    private JFormattedTextField ftxtTel1;
+    private JFormattedTextField ftxtTel2;
+    private JFormattedTextField ftxtTel3;
     private JFormattedTextField jtf;
     private JFormattedTextField jtf1;
     private JFormattedTextField jtf2;
     private JFormattedTextField jtf3;
-    private JTextField textField_5;
-    private JTextField textField_6;
+    private JTextArea txtDevAreas;
+    private JTextField txtAddDevArea;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
@@ -64,9 +65,36 @@ public class RestoManageView extends JInternalFrame {
     private final JPanel panel_16;
     private MaskFormatter tel;
     private MaskFormatter tel4;
+    private final JButton btnAddDeliveryArea;
+    private final JButton btnDeleteDeliveryArea;
+    private final JLabel lblViewTitle;
 
     public JPanel getPanel_16() {
         return panel_16;
+    }
+
+    public JLabel getLblViewTitle() {
+        return lblViewTitle;
+    }
+
+    public JFormattedTextField getFtxtTel1() {
+        return ftxtTel1;
+    }
+
+    public JFormattedTextField getFtxtTel2() {
+        return ftxtTel2;
+    }
+
+    public JFormattedTextField getFtxtTel3() {
+        return ftxtTel3;
+    }
+
+    public JButton getBtnAddDeliveryArea() {
+        return btnAddDeliveryArea;
+    }
+
+    public JButton getBtnDeleteDeliveryArea() {
+        return btnDeleteDeliveryArea;
     }
 
     /**
@@ -105,9 +133,9 @@ public class RestoManageView extends JInternalFrame {
         JPanel panel_10 = new JPanel();
         panel_3.add(panel_10);
 
-        JLabel lblAddNewRestaurant = new JLabel("Add New Restaurant");
-        panel_10.add(lblAddNewRestaurant);
-        lblAddNewRestaurant.setFont(new Font("Consolas", Font.BOLD, 30));
+        lblViewTitle = new JLabel("Add New Restaurant");
+        panel_10.add(lblViewTitle);
+        lblViewTitle.setFont(new Font("Consolas", Font.BOLD, 30));
 
         JPanel panel_14 = new JPanel();
         panel_3.add(panel_14);
@@ -116,18 +144,14 @@ public class RestoManageView extends JInternalFrame {
         JLabel label = new JLabel("Restaurant Name:     ");
         panel_14.add(label);
 
-        textField = new JTextField();
-        getTextField().setMargin(new Insets(2, 2, 2, 80));
-        getTextField().setColumns(10);
-        panel_14.add(getTextField());
+        txtRestoName = new JTextField();
+        panel_14.add(getTxtRestoName());
 
         JLabel label_1 = new JLabel("Restaurant Address: ");
         panel_14.add(label_1);
 
-        textField_1 = new JTextField();
-        getTextField_1().setMargin(new Insets(2, 2, 2, 80));
-        getTextField_1().setColumns(10);
-        panel_14.add(getTextField_1());
+        txtRestoAddr = new JTextField();
+        panel_14.add(getTxtRestoAddr());
 
         JLabel label_2 = new JLabel("Telephone Number:               ");
         panel_14.add(label_2);
@@ -145,25 +169,25 @@ public class RestoManageView extends JInternalFrame {
             e.printStackTrace();
         }
 
-        textField_2 = new JFormattedTextField(tel);
-        getTextField_2().setMaximumSize(new Dimension(2147483630, 2147483647));
-        getTextField_2().setMargin(new Insets(2, 0, 2, 0));
-        getTextField_2().setColumns(3);
-        panel_15.add(getTextField_2());
+        ftxtTel1 = new JFormattedTextField(tel);
+        ftxtTel1.setMaximumSize(new Dimension(2147483630, 2147483647));
+        ftxtTel1.setMargin(new Insets(2, 0, 2, 0));
+        ftxtTel1.setColumns(3);
+        panel_15.add(ftxtTel1);
 
         JLabel label_4 = new JLabel(")");
         panel_15.add(label_4);
 
-        textField_3 = new JFormattedTextField(tel);
-        getTextField_3().setColumns(3);
-        panel_15.add(getTextField_3());
+        ftxtTel2 = new JFormattedTextField(tel);
+        ftxtTel2.setColumns(3);
+        panel_15.add(ftxtTel2);
 
         JLabel label_5 = new JLabel("-");
         panel_15.add(label_5);
 
-        textField_4 = new JFormattedTextField(tel4);
-        getTextField_4().setColumns(4);
-        panel_15.add(getTextField_4());
+        ftxtTel3 = new JFormattedTextField(tel4);
+        ftxtTel3.setColumns(4);
+        panel_15.add(ftxtTel3);
 
         JPanel panel_6 = new JPanel();
         panel_6.setPreferredSize(new Dimension(345, 250));
@@ -400,7 +424,6 @@ public class RestoManageView extends JInternalFrame {
         comboBox_27.setPreferredSize(new Dimension(50, 22));
         panel_9.add(comboBox_27);
 
-
         JPanel panel_2 = new JPanel();
         panel_3.add(panel_2);
         panel_2.setLayout(new BorderLayout(0, 5));
@@ -418,9 +441,13 @@ public class RestoManageView extends JInternalFrame {
         panel_12.setPreferredSize(new Dimension(343, 70));
         panel_12.setLayout(new BorderLayout(0, 0));
 
-        textField_5 = new JTextField();
-        panel_12.add(getTextField_5(), BorderLayout.CENTER);
-        getTextField_5().setColumns(10);
+        txtDevAreas = new JTextArea();
+        txtDevAreas.setBackground(UIManager.getColor("FormattedTextField.disabledBackground"));
+        txtDevAreas.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.LIGHT_GRAY));
+        txtDevAreas.setEditable(false);
+        txtDevAreas.setLineWrap(true);
+        txtDevAreas.setWrapStyleWord(true);
+        panel_12.add(getTxtDevAreas(), BorderLayout.CENTER);
 
         JPanel panel_13 = new JPanel();
         panel_2.add(panel_13, BorderLayout.SOUTH);
@@ -429,14 +456,18 @@ public class RestoManageView extends JInternalFrame {
         JLabel lblDeliveryArea = new JLabel("Delivery Area: ");
         panel_13.add(lblDeliveryArea);
 
-        textField_6 = new JTextField();
-        panel_13.add(getTextField_6());
-        getTextField_6().setColumns(3);
+        try {
+            txtAddDevArea = new JFormattedTextField(new MaskFormatter("#U#"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        panel_13.add(getTxtAddDevArea());
+        getTxtAddDevArea().setColumns(3);
 
-        JButton btnAddDeliveryArea = new JButton("Add Delivery Area");
+        btnAddDeliveryArea = new JButton("Add Delivery Area");
         panel_13.add(btnAddDeliveryArea);
 
-        JButton btnDeleteDeliveryArea = new JButton("Delete Delivery Area");
+        btnDeleteDeliveryArea = new JButton("Delete Delivery Area");
         panel_13.add(btnDeleteDeliveryArea);
 
         btnSave = new JButton("Save");
@@ -447,56 +478,24 @@ public class RestoManageView extends JInternalFrame {
         return btnSave;
     }
 
-    public JTextField getTextField() {
-        return textField;
+    public JTextField getTxtRestoName() {
+        return txtRestoName;
     }
 
-    public JTextField getTextField_1() {
-        return textField_1;
+    public JTextField getTxtRestoAddr() {
+        return txtRestoAddr;
     }
 
-    public JTextField getResname() {
-        return resname;
+    public String getFtxtTelParsed() {
+        return "(" + ftxtTel1.getText() + ") " + ftxtTel2.getText() + "-" + ftxtTel3.getText();
     }
 
-    public JTextField getResadd() {
-        return resadd;
+    public JTextArea getTxtDevAreas() {
+        return txtDevAreas;
     }
 
-    public JFormattedTextField getTextField_2() {
-        return textField_2;
-    }
-
-    public JFormattedTextField getTextField_3() {
-        return textField_3;
-    }
-
-    public JFormattedTextField getTextField_4() {
-        return textField_4;
-    }
-
-    public JFormattedTextField getJtf() {
-        return jtf;
-    }
-
-    public JFormattedTextField getJtf1() {
-        return jtf1;
-    }
-
-    public JFormattedTextField getJtf2() {
-        return jtf2;
-    }
-
-    public JFormattedTextField getJtf3() {
-        return jtf3;
-    }
-
-    public JTextField getTextField_5() {
-        return textField_5;
-    }
-
-    public JTextField getTextField_6() {
-        return textField_6;
+    public JTextField getTxtAddDevArea() {
+        return txtAddDevArea;
     }
 
     public JComboBox getComboBox1() {

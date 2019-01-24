@@ -1,6 +1,7 @@
 package delivery_system;
 
 import delivery_system.controller.main.MainController;
+import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
 import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
@@ -39,8 +40,12 @@ public class Main {
         users.addUser(new User(Roles.MANAGER, "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 1", "deli1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
 
+        // Add default restaurants
+        restaurants.addRestaurant(new Restaurant("McDonald's", "7685 Boulevard Maurice-Duplessis", "(514) 643-2892", null, new String[]{"1K1"}));
+
         // Launch account/new user window
         accountFrame = new AccountFrame(users);
+
     }
 
     public static void shutdown() {

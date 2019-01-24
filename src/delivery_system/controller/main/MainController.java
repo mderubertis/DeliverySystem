@@ -210,7 +210,30 @@ public class MainController implements ActionListener {
             }
 
             if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete) {
-                restoMangeController.showView();
+                if (menuItem == mntmEdit) {
+                    String[] restos = new String[Main.getRestaurants().getRestaurants().size()];
+
+                    for (int i = 0; i < Main.getRestaurants().getRestaurants().size(); i++)
+                        restos[i] = Main.getRestaurants().getRestaurant(i).getName();
+
+                    final JComboBox combo = new JComboBox<>(restos);
+
+                    String[] options = { "Edit", "Cancel" };
+
+                    String title = "Choose restaurant to edit";
+                    int selection = JOptionPane.showOptionDialog(null, combo, title,
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options,
+                            options[0]);
+
+                    if (selection == 0) {
+                        restoMangeController.setCurrentResto(Main.getRestaurants().getRestaurant(combo.getSelectedIndex()));
+                        restoMangeController.setEdit(true);
+                        restoMangeController.showView();
+                    }
+                } else {
+                    restoMangeController.setEdit(false);
+                    restoMangeController.showView();
+                }
             }
 
         }
