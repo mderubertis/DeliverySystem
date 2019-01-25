@@ -24,12 +24,8 @@ public class Users {
         this.users.add(user);
     }
 
-    public void delUser(int user) {
+    public void delUser(User user) {
         this.users.remove(user);
-    }
-
-    public User getUser(int user) {
-        return this.users.get(user);
     }
 
     public User getUser(String username) {
@@ -40,8 +36,8 @@ public class Users {
         return null;
     }
 
-    public void editUser(int user, User newUser) {
-        this.users.set(user, newUser);
+    public void editUser(User user, User newUser) {
+        this.users.set(this.users.indexOf(user), newUser);
     }
 
     public void setActiveUser(User activeUser) {

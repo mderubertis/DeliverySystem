@@ -3,8 +3,10 @@ package delivery_system.controller.resto;
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
 import delivery_system.views.RestoManageView;
+import org.json.JSONObject;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -156,7 +158,21 @@ public class RestoMangeController {
         this.view.setVisible(true);
     }
 
+    private String hoursToJSON() {
+        JSONObject obj = new JSONObject();
+
+        obj.put("name", "foo");
+        obj.put("num", new Integer(100));
+        obj.put("balance", new Double(1000.21));
+        obj.put("is_vip", new Boolean(true));
+    }
+
     private void clear() {
+        for (Component component : view.getOpenHours().getComponents()) {
+            if (component instanceof JComboBox) {
+                System.out.println(component);
+            }
+        }
         view.getTxtRestoName().setText("");
         view.getTxtRestoAddr().setText("");
         view.getFtxtTel1().setValue("");

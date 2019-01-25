@@ -9,6 +9,7 @@ package delivery_system.model.orders;
  */
 
 public class Order {
+    private String status;
     private String deliveryDate;
     private String deliveryTime;
     private String postalCode;
@@ -18,7 +19,8 @@ public class Order {
     private String phone;
     private String[] deliveryArea;
 
-    public Order(String deliveryDate, String deliveryTime, String postalCode, String[] restaurants, String[] menus, String[] order, String phone, String[] deliveryArea) {
+    public Order(String status, String deliveryDate, String deliveryTime, String postalCode, String[] restaurants, String[] menus, String[] order, String phone, String[] deliveryArea) {
+        this.status = status;
         this.deliveryDate = deliveryDate;
         this.deliveryTime = deliveryTime;
         this.postalCode = postalCode;
@@ -27,6 +29,14 @@ public class Order {
         this.order = order;
         this.phone = phone;
         this.deliveryArea = deliveryArea;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getDeliveryDate() {
