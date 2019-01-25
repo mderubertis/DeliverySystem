@@ -1,5 +1,7 @@
 package delivery_system.model.restaurants;
 
+import org.json.JSONObject;
+
 import java.util.Arrays;
 
 /**
@@ -14,10 +16,10 @@ public class Restaurant {
     private String name;
     private String address;
     private String phone;
-    private String[] hours; // may change depending on input collection
+    private JSONObject hours; // may change depending on input collection
     private String[] delieveryArea;
 
-    public Restaurant(String name, String address, String phone, String[] hours, String[] delieveryArea) {
+    public Restaurant(String name, String address, String phone, JSONObject hours, String[] delieveryArea) {
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -31,7 +33,7 @@ public class Restaurant {
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", hours=" + Arrays.toString(hours) +
+                ", hours=" + hours.toString() +
                 ", delieveryArea=" + Arrays.toString(delieveryArea) +
                 '}';
     }
@@ -60,11 +62,11 @@ public class Restaurant {
         this.phone = phone;
     }
 
-    public String[] getHours() {
+    public JSONObject getHours() {
         return hours;
     }
 
-    public void setHours(String[] hours) {
+    public void setHours(JSONObject hours) {
         this.hours = hours;
     }
 

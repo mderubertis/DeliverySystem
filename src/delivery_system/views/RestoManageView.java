@@ -4,7 +4,6 @@ import java.awt.*;
 import java.text.ParseException;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.text.MaskFormatter;
 
@@ -21,19 +20,13 @@ import javax.swing.text.MaskFormatter;
 public class RestoManageView extends JInternalFrame {
     private final JTextField txtRestoName;
     private final JTextField txtRestoAddr;
-    private JTextField resname;
-    private JTextField resadd;
     private JFormattedTextField ftxtTel1;
     private JFormattedTextField ftxtTel2;
     private JFormattedTextField ftxtTel3;
-    private JFormattedTextField jtf;
-    private JFormattedTextField jtf1;
-    private JFormattedTextField jtf2;
-    private JFormattedTextField jtf3;
     private JTextArea txtDevAreas;
     private JTextField txtAddDevArea;
     private final JButton btnSave;
-    private final JPanel panel_16;
+    private final JPanel mainPanel;
     private MaskFormatter tel;
     private MaskFormatter tel4;
     private final JButton btnAddDeliveryArea;
@@ -67,9 +60,9 @@ public class RestoManageView extends JInternalFrame {
     private final JComboBox cmbFriCHrs2;
     private final JComboBox cmbSatCHrs;
     private final JComboBox cmbSatCHrs2;
-    private final JPanel openHours;
-    private final JPanel closedHours;
-
+    private final JPanel openHoursPanel;
+    private final JPanel closedHoursPanel;
+    private final JButton btnModifyAllTimes;
 
     /**
      * Create the frame.
@@ -84,24 +77,28 @@ public class RestoManageView extends JInternalFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         setMaximumSize(new Dimension(895, 720));
 
-
-        //this.getContentPane().setLayout();
-
         String[] hours = new String[13];
-        String[] mins = new String[60];
+        String[] mins = new String[61];
 
-        for (int i = 0; i < 13; i++)
-            hours[i] = String.valueOf(i);
+        for (int i = 0; i < 12; i++) {
+            if (String.valueOf(i).length() > 1)
+                hours[i + 1] = String.valueOf(i);
+            else
+                hours[i + 1] = "0" + String.valueOf(i);
+        }
 
-        for (int i = 0; i < 60; i++)
-            mins[i] = String.valueOf(i);
+        for (int i = 0; i < 60; i++) {
+            if (String.valueOf(i).length() > 1)
+                mins[i + 1] = String.valueOf(i);
+            else
+                mins[i + 1] = "0" + String.valueOf(i);
+        }
 
-        panel_16 = new JPanel();
-        panel_16.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
         JPanel panel_3 = new JPanel();
-        panel_16.add(panel_3, BorderLayout.CENTER);
-        panel_3.setBorder(new EmptyBorder(0, 100, 0, 100));
+        mainPanel.add(panel_3, BorderLayout.CENTER);
         panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.Y_AXIS));
 
         JPanel panel_10 = new JPanel();
@@ -199,7 +196,7 @@ public class RestoManageView extends JInternalFrame {
         lblNewLabel_3.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel_5.add(lblNewLabel_3);
 
-        JButton btnModifyAllTimes = new JButton("Modify all times at once");
+        btnModifyAllTimes = new JButton("Modify all times at once");
         panel_5.add(btnModifyAllTimes);
 
         JPanel panel_17 = new JPanel();
@@ -233,170 +230,184 @@ public class RestoManageView extends JInternalFrame {
         JLabel label_12 = new JLabel("Saturday");
         panel_7.add(label_12);
 
-        openHours = new JPanel();
-        FlowLayout flowLayout = (FlowLayout) openHours.getLayout();
+        openHoursPanel = new JPanel();
+        FlowLayout flowLayout = (FlowLayout) openHoursPanel.getLayout();
         flowLayout.setVgap(2);
-        panel_17.add(openHours);
+        panel_17.add(openHoursPanel);
 
         cmbSunOHrs = new JComboBox(hours);
+        cmbSunOHrs.setName("cmbSunOHrs");
         cmbSunOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbSunOHrs);
+        openHoursPanel.add(cmbSunOHrs);
 
         JLabel label_13 = new JLabel("h");
-        openHours.add(label_13);
+        openHoursPanel.add(label_13);
 
         cmbSunOHrs2 = new JComboBox(mins);
         cmbSunOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbSunOHrs2);
+        cmbSunOHrs2.setName("cmbSunOHrs2");
+        openHoursPanel.add(cmbSunOHrs2);
 
         cmbMonOHrs = new JComboBox(hours);
+        cmbMonOHrs.setName("cmbMonOHrs");
         cmbMonOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbMonOHrs);
+        openHoursPanel.add(cmbMonOHrs);
 
         JLabel label_14 = new JLabel("h");
-        openHours.add(label_14);
+        openHoursPanel.add(label_14);
 
         cmbMonOHrs2 = new JComboBox(mins);
+        cmbMonOHrs2.setName("cmbMonOHrs2");
         cmbMonOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbMonOHrs2);
+        openHoursPanel.add(cmbMonOHrs2);
 
         cmbTuesOHrs = new JComboBox(hours);
+        cmbTuesOHrs.setName("cmbTuesOHrs");
         cmbTuesOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbTuesOHrs);
+        openHoursPanel.add(cmbTuesOHrs);
 
         JLabel label_15 = new JLabel("h");
-        openHours.add(label_15);
+        openHoursPanel.add(label_15);
 
         cmbTuesOHrs2 = new JComboBox(mins);
+        cmbTuesOHrs2.setName("cmbTuesOHrs2");
         cmbTuesOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbTuesOHrs2);
+        openHoursPanel.add(cmbTuesOHrs2);
 
         cmbWedOHrs = new JComboBox(hours);
+        cmbWedOHrs.setName("cmbWedOHrs");
         cmbWedOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbWedOHrs);
+        openHoursPanel.add(cmbWedOHrs);
 
         JLabel label_16 = new JLabel("h");
-        openHours.add(label_16);
+        openHoursPanel.add(label_16);
 
         cmbWedOHrs2 = new JComboBox(mins);
+        cmbWedOHrs2.setName("cmbWedOHrs2");
         cmbWedOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbWedOHrs2);
+        openHoursPanel.add(cmbWedOHrs2);
 
         cmbThursOHrs = new JComboBox(hours);
+        cmbThursOHrs.setName("cmbThursOHrs");
         cmbThursOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbThursOHrs);
+        openHoursPanel.add(cmbThursOHrs);
 
         JLabel label_17 = new JLabel("h");
-        openHours.add(label_17);
+        openHoursPanel.add(label_17);
 
         cmbThursOHrs2 = new JComboBox(mins);
+        cmbThursOHrs2.setName("cmbThursOHrs2");
         cmbThursOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbThursOHrs2);
+        openHoursPanel.add(cmbThursOHrs2);
 
         cmbFriOHrs = new JComboBox(hours);
+        cmbFriOHrs.setName("cmbFriOHrs");
         cmbFriOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbFriOHrs);
+        openHoursPanel.add(cmbFriOHrs);
 
         JLabel label_18 = new JLabel("h");
-        openHours.add(label_18);
+        openHoursPanel.add(label_18);
 
         cmbFriOHrs2 = new JComboBox(mins);
+        cmbFriOHrs2.setName("cmbFriOHrs2");
         cmbFriOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbFriOHrs2);
+        openHoursPanel.add(cmbFriOHrs2);
 
         cmbSatOHrs = new JComboBox(hours);
+        cmbSatOHrs.setName("cmbSatOHrs");
         cmbSatOHrs.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbSatOHrs);
+        openHoursPanel.add(cmbSatOHrs);
 
         JLabel label_19 = new JLabel("h");
-        openHours.add(label_19);
+        openHoursPanel.add(label_19);
 
         cmbSatOHrs2 = new JComboBox(mins);
+        cmbSatOHrs2.setName("cmbSatOHrs2");
         cmbSatOHrs2.setPreferredSize(new Dimension(50, 22));
-        openHours.add(cmbSatOHrs2);
+        openHoursPanel.add(cmbSatOHrs2);
 
-        closedHours = new JPanel();
-        FlowLayout flowLayout_1 = (FlowLayout) closedHours.getLayout();
+        closedHoursPanel = new JPanel();
+        FlowLayout flowLayout_1 = (FlowLayout) closedHoursPanel.getLayout();
         flowLayout_1.setVgap(2);
-        closedHours.setPreferredSize(new Dimension(130, 10));
-        panel_17.add(closedHours, BorderLayout.EAST);
+        closedHoursPanel.setPreferredSize(new Dimension(130, 10));
+        panel_17.add(closedHoursPanel, BorderLayout.EAST);
 
         cmbSunCHrs = new JComboBox(hours);
         cmbSunCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbSunCHrs);
+        closedHoursPanel.add(cmbSunCHrs);
 
         JLabel label_20 = new JLabel("h");
-        closedHours.add(label_20);
+        closedHoursPanel.add(label_20);
 
         cmbSunCHrs2 = new JComboBox(mins);
         cmbSunCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbSunCHrs2);
+        closedHoursPanel.add(cmbSunCHrs2);
 
         cmbMonCHrs = new JComboBox(hours);
         cmbMonCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbMonCHrs);
+        closedHoursPanel.add(cmbMonCHrs);
 
         JLabel label_21 = new JLabel("h");
-        closedHours.add(label_21);
+        closedHoursPanel.add(label_21);
 
         cmbMonCHrs2 = new JComboBox(mins);
         cmbMonCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbMonCHrs2);
+        closedHoursPanel.add(cmbMonCHrs2);
 
         cmbTuesCHrs = new JComboBox(hours);
         cmbTuesCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbTuesCHrs);
+        closedHoursPanel.add(cmbTuesCHrs);
 
         JLabel label_22 = new JLabel("h");
-        closedHours.add(label_22);
+        closedHoursPanel.add(label_22);
 
         cmbTuesCHrs2 = new JComboBox(mins);
         cmbTuesCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbTuesCHrs2);
+        closedHoursPanel.add(cmbTuesCHrs2);
 
         cmbWedCHrs = new JComboBox(hours);
         cmbWedCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbWedCHrs);
+        closedHoursPanel.add(cmbWedCHrs);
 
         JLabel label_23 = new JLabel("h");
-        closedHours.add(label_23);
+        closedHoursPanel.add(label_23);
 
         cmbWedCHrs2 = new JComboBox(mins);
         cmbWedCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbWedCHrs2);
+        closedHoursPanel.add(cmbWedCHrs2);
 
         cmbThursCHrs = new JComboBox(hours);
         cmbThursCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbThursCHrs);
+        closedHoursPanel.add(cmbThursCHrs);
 
         JLabel label_24 = new JLabel("h");
-        closedHours.add(label_24);
+        closedHoursPanel.add(label_24);
 
         cmbThursCHrs2 = new JComboBox(mins);
         cmbThursCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbThursCHrs2);
+        closedHoursPanel.add(cmbThursCHrs2);
 
         cmbFriCHrs = new JComboBox(hours);
         cmbFriCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbFriCHrs);
+        closedHoursPanel.add(cmbFriCHrs);
 
         JLabel label_25 = new JLabel("h");
-        closedHours.add(label_25);
+        closedHoursPanel.add(label_25);
 
         cmbFriCHrs2 = new JComboBox(mins);
         cmbFriCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbFriCHrs2);
+        closedHoursPanel.add(cmbFriCHrs2);
 
         cmbSatCHrs = new JComboBox(hours);
         cmbSatCHrs.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbSatCHrs);
+        closedHoursPanel.add(cmbSatCHrs);
 
         JLabel label_26 = new JLabel("h");
-        closedHours.add(label_26);
+        closedHoursPanel.add(label_26);
 
         cmbSatCHrs2 = new JComboBox(mins);
         cmbSatCHrs2.setPreferredSize(new Dimension(50, 22));
-        closedHours.add(cmbSatCHrs2);
+        closedHoursPanel.add(cmbSatCHrs2);
 
         JPanel panel_2 = new JPanel();
         panel_3.add(panel_2);
@@ -461,7 +472,7 @@ public class RestoManageView extends JInternalFrame {
     }
 
     public String getFtxtTelParsed() {
-        return "(" + ftxtTel1.getText() + ") " + ftxtTel2.getText() + "-" + ftxtTel3.getText();
+        return "(" + ftxtTel1.getValue() + ") " + ftxtTel2.getValue() + "-" + ftxtTel3.getValue();
     }
 
     public JTextArea getTxtDevAreas() {
@@ -472,8 +483,8 @@ public class RestoManageView extends JInternalFrame {
         return txtAddDevArea;
     }
 
-    public JPanel getPanel_16() {
-        return panel_16;
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
 
     public JLabel getLblViewTitle() {
@@ -612,11 +623,15 @@ public class RestoManageView extends JInternalFrame {
         return cmbSatCHrs2;
     }
 
-    public JPanel getOpenHours() {
-        return openHours;
+    public JPanel getOpenHoursPanel() {
+        return openHoursPanel;
     }
 
-    public JPanel getClosedHours() {
-        return closedHours;
+    public JPanel getClosedHoursPanel() {
+        return closedHoursPanel;
+    }
+
+    public JButton getBtnModifyAllTimes() {
+        return btnModifyAllTimes;
     }
 }
