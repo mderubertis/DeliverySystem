@@ -1,4 +1,4 @@
-package delivery_system.controller.resto;
+package delivery_system.controller;
 
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
@@ -217,15 +217,17 @@ public class RestoMangeController {
                         String[] devArea = view.getTxtDevAreas().getText().split(", ");
 
                         if (!edit)
-                            model.addRestaurant(new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea));
+                            model.addRestaurant(new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea, null));
                         else
-                            model.editRestaurant(currentResto, new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea));
+                            model.editRestaurant(currentResto, new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea, null));
 
                         setCurrentResto(null);
                         setEdit(false);
                         clear();
                         showView();
                     }
+                } else {
+                    JOptionPane.showMessageDialog(view, "Invalid fields in form", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

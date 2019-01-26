@@ -3,6 +3,7 @@ package delivery_system.views.account;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -49,8 +50,12 @@ public class LoginView extends JPanel {
         this.add(panel, BorderLayout.NORTH);
 
         JLabel lblDeliverySystem = new JLabel("Delivery System");
+        lblDeliverySystem.setHorizontalAlignment(SwingConstants.CENTER);
+        URL iconURL = getClass().getResource("/delivery_system/assets/icons8-meal-48.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        lblDeliverySystem.setIcon(icon);
         lblDeliverySystem.setFont(new Font("Consolas", Font.PLAIN, 35));
-        lblDeliverySystem.setPreferredSize(new Dimension(300, 45));
+        lblDeliverySystem.setPreferredSize(new Dimension(400, 64));
         panel.add(lblDeliverySystem);
 
         JPanel panel_1 = new JPanel();
@@ -73,7 +78,7 @@ public class LoginView extends JPanel {
         panel_3.add(btnQuit);
         
         JPanel panel_2 = new JPanel();
-        panel_2.setBorder(new EmptyBorder(30, 0, 30, 0));
+        panel_2.setBorder(new EmptyBorder(15, 0, 15, 0));
         this.add(panel_2);
         panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 

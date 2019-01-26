@@ -1,5 +1,6 @@
 package delivery_system.model.restaurants;
 
+import delivery_system.model.menu.Menu;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -18,13 +19,15 @@ public class Restaurant {
     private String phone;
     private JSONObject hours; // may change depending on input collection
     private String[] delieveryArea;
+    private Menu menu;
 
-    public Restaurant(String name, String address, String phone, JSONObject hours, String[] delieveryArea) {
+    public Restaurant(String name, String address, String phone, JSONObject hours, String[] delieveryArea, Menu menu) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.hours = hours;
         this.delieveryArea = delieveryArea;
+        this.menu = menu;
     }
 
     @Override
@@ -33,8 +36,9 @@ public class Restaurant {
                 "name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
-                ", hours=" + hours.toString() +
+                ", hours=" + hours +
                 ", delieveryArea=" + Arrays.toString(delieveryArea) +
+                ", menu=" + menu.toString() +
                 '}';
     }
 
@@ -76,5 +80,13 @@ public class Restaurant {
 
     public void setDelieveryArea(String[] delieveryArea) {
         this.delieveryArea = delieveryArea;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }

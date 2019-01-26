@@ -1,6 +1,7 @@
 package delivery_system.model.menu;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Delivery System
@@ -13,8 +14,8 @@ import java.util.ArrayList;
 public class Menu {
     private ArrayList<Item> menu;
 
-    public Menu(ArrayList<Item> menu) {
-        this.menu = menu;
+    public Menu() {
+        this.menu = new ArrayList<>();
     }
 
     public ArrayList<Item> getMenu() {
@@ -35,5 +36,12 @@ public class Menu {
 
     public void editItem(int item, Item newItem) {
         this.menu.set(item, newItem);
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "menu=" + Arrays.toString(menu.toArray()) +
+                '}';
     }
 }

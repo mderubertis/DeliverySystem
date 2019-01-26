@@ -1,6 +1,6 @@
 package delivery_system.views.account;
 
-import delivery_system.controller.account.LoginController;
+import delivery_system.controller.LoginController;
 import delivery_system.model.users.Users;
 
 import java.awt.*;

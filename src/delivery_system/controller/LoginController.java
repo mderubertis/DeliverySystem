@@ -1,4 +1,4 @@
-package delivery_system.controller.account;
+package delivery_system.controller;
 
 import delivery_system.Main;
 import delivery_system.model.users.User;
