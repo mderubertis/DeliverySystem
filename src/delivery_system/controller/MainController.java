@@ -5,6 +5,7 @@ import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
 import delivery_system.views.MainView;
+import delivery_system.views.MenuView;
 import delivery_system.views.RestoManageView;
 
 import javax.swing.*;
@@ -20,6 +21,8 @@ import java.net.URL;
  * @date 2019-01-21
  */
 public class MainController implements ActionListener {
+    private MenuController menuController;
+    private MenuView menuView;
     Users model = new Users();
     MainView view;
 
@@ -120,6 +123,7 @@ public class MainController implements ActionListener {
         menuBar.add(mnMenu);
 
         mntmCreate_menu = new JMenuItem("Create");
+        mntmCreate_menu.addActionListener(this);
         mnMenu.add(mntmCreate_menu);
 
         mntmEdit_menu = new JMenuItem("Edit");
@@ -190,6 +194,17 @@ public class MainController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().getClass().getSimpleName().equals("JMenuItem")) {
             JMenuItem menuItem = (JMenuItem) e.getSource();
+            String[] options = {"Add", "Cancel"};
+            String[] restos = new String[Main.getRestaurants().getRestaurants().size()];
+
+            if (Main.getRestaurants().getRestaurants().size() == 0) {
+                restos = new String[1];
+                restos[0] = "No restaurants";
+            } else {
+                for (int i = 0; i < Main.getRestaurants().getRestaurants().size(); i++)
+                    restos[i] = Main.getRestaurants().getRestaurant(i).getName();
+
+            }
 
             if (menuItem == mntmDisconnect) {
                 Main.logout();
@@ -201,20 +216,8 @@ public class MainController implements ActionListener {
             }
 
             if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete) {
-                String[] options = {"Add", "Cancel"};
-                String[] restos = new String[Main.getRestaurants().getRestaurants().size()];
 
-                if (Main.getRestaurants().getRestaurants().size() == 0) {
-                    restos = new String[1];
-                    restos[0] = "No restaurants";
-                } else {
-                    for (int i = 0; i < Main.getRestaurants().getRestaurants().size(); i++)
-                        restos[i] = Main.getRestaurants().getRestaurant(i).getName();
-
-                }
                 final JComboBox combo = new JComboBox<>(restos);
-
-
                 if (menuItem == mntmEdit) {
                     options[0] = "Edit";
 
@@ -243,6 +246,13 @@ public class MainController implements ActionListener {
                     restoMangeController.setEdit(false);
                     restoMangeController.showView();
                 }
+            }
+
+            if (menuItem == mntmCreate_menu || menuItem == mntmEdit_menu || menuItem == mntmDelete_menu) {
+                menuView = new MenuView();
+                menuController = new MenuController(Main.getRestaurants(), menuView);
+                view.getContentPane().add(menuView);
+                menuController.showView();
             }
 
         }

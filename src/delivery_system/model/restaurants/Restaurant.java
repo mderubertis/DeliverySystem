@@ -32,14 +32,20 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", hours=" + hours +
-                ", delieveryArea=" + Arrays.toString(delieveryArea) +
-                ", menu=" + menu.toString() +
-                '}';
+        String returnStr = "";
+        try {
+            returnStr = "Restaurant{" +
+                    "name='" + name + '\'' +
+                    ", address='" + address + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", hours=" + hours +
+                    ", delieveryArea=" + Arrays.toString(delieveryArea) +
+                    ", menu=" + menu.toString() +
+                    '}';
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return returnStr;
     }
 
     public String getName() {

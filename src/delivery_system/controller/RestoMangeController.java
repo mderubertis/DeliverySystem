@@ -1,5 +1,7 @@
 package delivery_system.controller;
 
+import delivery_system.model.menu.*;
+import delivery_system.model.menu.Menu;
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
 import delivery_system.views.RestoManageView;
@@ -217,9 +219,9 @@ public class RestoMangeController {
                         String[] devArea = view.getTxtDevAreas().getText().split(", ");
 
                         if (!edit)
-                            model.addRestaurant(new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea, null));
+                            model.addRestaurant(new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea, new Menu()));
                         else
-                            model.editRestaurant(currentResto, new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea, null));
+                            model.editRestaurant(currentResto, new Restaurant(view.getTxtRestoName().getText(), view.getTxtRestoAddr().getText(), view.getFtxtTelParsed(), hoursToJSON(), devArea, new Menu()));
 
                         setCurrentResto(null);
                         setEdit(false);
