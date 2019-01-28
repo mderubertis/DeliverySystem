@@ -38,7 +38,6 @@ public class LoginController {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NullPointerException npe) {
-                    System.err.println(npe.getMessage());
                     JOptionPane.showMessageDialog(view, "Invalid username", "Login Error",
                             JOptionPane.ERROR_MESSAGE);
                 } catch (Exception e) {

@@ -98,6 +98,10 @@ public class MainController implements ActionListener {
         restoMangeController = new RestoMangeController(Main.getRestaurants(), restoManageView);
         view.getContentPane().add(restoManageView);
 
+        menuView = new MenuView();
+        menuController = new MenuController(Main.getRestaurants(), menuView);
+        view.getContentPane().add(menuView);
+
         // View setup
         view.setTitle("Food Delivery System - [Logged in as " + activeUser.getUsername() + "] (" + role_readable + ")");
         view.setVisible(true);
@@ -127,6 +131,7 @@ public class MainController implements ActionListener {
         mnMenu.add(mntmCreate_menu);
 
         mntmEdit_menu = new JMenuItem("Edit");
+        mntmEdit_menu.addActionListener(this);
         mnMenu.add(mntmEdit_menu);
 
         mntmDelete_menu = new JMenuItem("Delete");
@@ -249,9 +254,6 @@ public class MainController implements ActionListener {
             }
 
             if (menuItem == mntmCreate_menu || menuItem == mntmEdit_menu || menuItem == mntmDelete_menu) {
-                menuView = new MenuView();
-                menuController = new MenuController(Main.getRestaurants(), menuView);
-                view.getContentPane().add(menuView);
                 menuController.showView();
             }
 

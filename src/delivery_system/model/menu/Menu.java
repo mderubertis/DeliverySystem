@@ -18,7 +18,7 @@ public class Menu {
         this.menu = new ArrayList<>();
     }
 
-    public ArrayList<Item> getMenu() {
+    public ArrayList<Item> getItems() {
         return menu;
     }
 
@@ -32,6 +32,10 @@ public class Menu {
 
     public Item getItem(int item) {
         return this.menu.get(item);
+    }
+
+    public Item getItem(Item item) {
+        return this.menu.get(this.menu.indexOf(item));
     }
 
     public void editItem(int item, Item newItem) {

@@ -6,6 +6,9 @@ package delivery_system.views;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.text.NumberFormat;
 
 /**
  * Mod4Project
@@ -22,6 +25,10 @@ public class MenuView extends JInternalFrame {
     private final JButton btnDeleteMenu;
     private final JLabel lblViewTitle;
     private final JList listRestaurants;
+    private NumberFormat priceFormat;
+    private double price = 0.0;
+    private final JButton btnAddItem;
+    private final JPanel menuPanel;
 
     /**
      * Create the panel.
@@ -33,7 +40,7 @@ public class MenuView extends JInternalFrame {
         setRootPaneCheckingEnabled(false);
         setResizable(true);
         setClosable(true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         setMaximumSize(new Dimension(540, 460));
 
         mainPanel = new JPanel();
@@ -41,7 +48,7 @@ public class MenuView extends JInternalFrame {
 
         JPanel panel = new JPanel();
 
-        JPanel panel_1 = new JPanel();
+        menuPanel = new JPanel();
 
         JSeparator separator = new JSeparator();
         separator.setOrientation(SwingConstants.VERTICAL);
@@ -52,19 +59,19 @@ public class MenuView extends JInternalFrame {
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
                                 GroupLayout.PREFERRED_SIZE)
-                        .addGap(7).addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addGap(7).addComponent(menuPanel, GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                         .addContainerGap()));
         gl_mainPanel.setVerticalGroup(gl_mainPanel.createParallelGroup(GroupLayout.Alignment.TRAILING).addGroup(gl_mainPanel
                 .createSequentialGroup().addContainerGap()
                 .addGroup(gl_mainPanel.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                        .addComponent(menuPanel, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                         .addComponent(separator, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                         .addComponent(panel, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
                 .addGap(9)));
-        panel_1.setLayout(new BorderLayout(5, 5));
+        menuPanel.setLayout(new BorderLayout(5, 5));
 
         JPanel panel_3 = new JPanel();
-        panel_1.add(panel_3, BorderLayout.WEST);
+        menuPanel.add(panel_3, BorderLayout.WEST);
 
         lblViewTitle = new JLabel("Create Menu");
         lblViewTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -87,7 +94,7 @@ public class MenuView extends JInternalFrame {
         panel_3.setLayout(gl_panel_3);
 
         JPanel panel_2 = new JPanel();
-        panel_1.add(panel_2, BorderLayout.SOUTH);
+        menuPanel.add(panel_2, BorderLayout.SOUTH);
 
         btnCreateMenu = new JButton("Create Menu");
         panel_2.add(btnCreateMenu);
@@ -96,7 +103,7 @@ public class MenuView extends JInternalFrame {
         panel_2.add(btnDeleteMenu);
 
         JPanel panel_4 = new JPanel();
-        panel_1.add(panel_4, BorderLayout.CENTER);
+        menuPanel.add(panel_4, BorderLayout.CENTER);
 
         JLabel lblAddItem = new JLabel("Add Item");
         lblAddItem.setHorizontalAlignment(SwingConstants.CENTER);
@@ -116,23 +123,33 @@ public class MenuView extends JInternalFrame {
 
         txtItem = new JTextField();
         panel_6.add(txtItem);
-        txtItem.setText("item");
         txtItem.setColumns(10);
 
         JPanel panel_7 = new JPanel();
         panel_5.add(panel_7);
 
-        JLabel lblPrice = new JLabel("Price");
+        JLabel lblPrice = new JLabel("Price $");
         panel_7.add(lblPrice);
         lblPrice.setHorizontalAlignment(SwingConstants.CENTER);
         lblPrice.setHorizontalTextPosition(SwingConstants.LEADING);
 
-        ftxtPrice = new JFormattedTextField();
-        ftxtPrice.setColumns(10);
-        panel_7.add(ftxtPrice);
-        ftxtPrice.setText("price");
+        priceFormat = NumberFormat.getNumberInstance();
+        priceFormat.setMinimumFractionDigits(2);
 
-        JButton btnAddItem = new JButton("Add Item");
+        ftxtPrice = new JFormattedTextField(priceFormat);
+        ftxtPrice.setValue(price);
+        ftxtPrice.setColumns(10);
+        ftxtPrice.addPropertyChangeListener("value", new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                Object source = evt.getSource();
+                ((Number) ftxtPrice.getValue()).doubleValue();
+            }
+        });
+        panel_7.add(ftxtPrice);
+
+
+        btnAddItem = new JButton("Add Item");
         GroupLayout gl_panel_4 = new GroupLayout(panel_4);
         gl_panel_4.setHorizontalGroup(
                 gl_panel_4.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -185,6 +202,14 @@ public class MenuView extends JInternalFrame {
 
     public JTable getTblMenu() {
         return tblMenu;
+    }
+
+    public JPanel getMenuPanel() {
+        return menuPanel;
+    }
+
+    public JButton getBtnAddItem() {
+        return btnAddItem;
     }
 
     public JButton getBtnDeleteMenu() {
