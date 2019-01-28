@@ -78,6 +78,7 @@ public class MenuView extends JInternalFrame {
         lblViewTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
 
         tblMenu = new JTable();
+        tblMenu.setShowHorizontalLines(false);
         tblMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tblMenu.setFillsViewportHeight(true);
         tblMenu.setBorder(new LineBorder(Color.LIGHT_GRAY));
@@ -142,7 +143,6 @@ public class MenuView extends JInternalFrame {
         ftxtPrice.addPropertyChangeListener("value", new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                Object source = evt.getSource();
                 ((Number) ftxtPrice.getValue()).doubleValue();
             }
         });

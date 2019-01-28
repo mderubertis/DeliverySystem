@@ -158,7 +158,7 @@ public class MenuController {
         this.view.getBtnAddItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tblMenuModel.addRow(new Object[]{view.getTxtItem().getText(), view.getFtxtPrice().getValue()});
+                tblMenuModel.addRow(new Object[]{view.getTxtItem().getText(), ((Number) view.getFtxtPrice().getValue()).doubleValue()});
             }
         });
 
