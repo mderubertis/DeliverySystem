@@ -20,9 +20,8 @@ import java.util.Arrays;
  *
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @version 1.0
- * @date 2019-01-17
+ * @date 2019 -01-17
  */
-
 public class Main {
 
     private static Users users;
@@ -67,6 +66,9 @@ public class Main {
         accountFrame = new AccountFrame(users);
     }
 
+    /**
+     * Shutdown.
+     */
     public static void shutdown() {
         int response = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
 
@@ -75,6 +77,9 @@ public class Main {
         }
     }
 
+    /**
+     * Login.
+     */
     public static void login() {
         // Launch appropriate Frame based on accessLvl
         if (users.getActiveUser() != null) {
@@ -84,6 +89,9 @@ public class Main {
         }
     }
 
+    /**
+     * Logout.
+     */
     public static void logout() {
         // Remove active user
         users.setActiveUser(null);
@@ -92,10 +100,20 @@ public class Main {
         accountFrame = new AccountFrame(users);
     }
 
+    /**
+     * Gets users.
+     *
+     * @return the users
+     */
     public static Users getUsers() {
         return users;
     }
 
+    /**
+     * Gets restaurants.
+     *
+     * @return the restaurants
+     */
     public static Restaurants getRestaurants() {
         return restaurants;
     }

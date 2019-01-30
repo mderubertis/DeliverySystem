@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>delivery_system</OriginalElement>
+  <nodes>
+    <node x="2692.806022276335" y="2070.5">delivery_system.model.LoginModel</node>
+    <node x="3474.196257215006" y="1077.0">delivery_system.views.account.AddAccountDialog</node>
+    <node x="2460.787484217172" y="3066.0">delivery_system.Main</node>
+    <node x="1238.7829635642147" y="725.0">delivery_system.views.RestoManageView</node>
+    <node x="694.0" y="3339.0">delivery_system.model.orders.Status</node>
+    <node x="2747.362950937951" y="436.0">delivery_system.model.users.User</node>
+    <node x="981.8060222763348" y="0.0">delivery_system.model.menu.Item</node>
+    <node x="105.25" y="1099.0">delivery_system.views.MenuView</node>
+    <node x="3222.269627074315" y="2542.0">delivery_system.views.account.AccountFrame</node>
+    <node x="606.25" y="447.0">delivery_system.model.restaurants.Restaurant</node>
+    <node x="623.9250000000002" y="1165.0">delivery_system.model.restaurants.Restaurants</node>
+    <node x="171.0" y="3639.0">delivery_system.model.orders.Orders</node>
+    <node x="896.4124842171718" y="2355.0">delivery_system.controller.MainController</node>
+    <node x="0.0" y="3339.0">delivery_system.model.orders.Order</node>
+    <node x="3062.084593704906" y="2059.5">delivery_system.controller.LoginController</node>
+    <node x="3174.446257215006" y="1176.5">delivery_system.views.account.LoginView</node>
+    <node x="958.2504667207793" y="1981.5">delivery_system.controller.RestoMangeController</node>
+    <node x="3366.696257215006" y="2048.0">delivery_system.controller.AddAccountController</node>
+    <node x="1038.0560222763347" y="169.0">delivery_system.model.menu.Menu</node>
+    <node x="2377.7829635642147" y="2038.0">delivery_system.model.users.Roles</node>
+    <node x="951.0" y="3339.0">delivery_system.views.AboutView</node>
+    <node x="551.2504667207793" y="1960.0">delivery_system.controller.MenuController</node>
+    <node x="2918.167685786435" y="1165.0">delivery_system.model.users.Users</node>
+    <node x="90.4355429292923" y="2059.0">delivery_system.views.MainView</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="delivery_system.controller.RestoMangeController" target="delivery_system.model.restaurants.Restaurant">
+      <point x="38.55555555555566" y="-126.0" />
+      <point x="1170.306022276335" y="1940.0" />
+      <point x="1156.5282444985571" y="1940.0" />
+      <point x="1156.5282444985571" y="685.0" />
+      <point x="1105.0" y="685.0" />
+      <point x="232.75" y="103.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.views.MainView">
+      <point x="-336.0" y="-290.5" />
+      <point x="920.4124842171718" y="2335.0" />
+      <point x="222.9355429292923" y="2335.0" />
+      <point x="26.5" y="48.5" />
+    </edge>
+    <edge source="delivery_system.model.orders.Orders" target="delivery_system.model.orders.Order">
+      <point x="76.75" y="-81.5" />
+      <point x="401.25" y="3614.0" />
+      <point x="486.75" y="3614.0" />
+      <point x="162.25" y="125.0" />
+    </edge>
+    <edge source="delivery_system.controller.AddAccountController" target="delivery_system.views.account.AddAccountDialog">
+      <point x="38.80000000000018" y="-59.5" />
+      <point x="3502.496257215006" y="1940.0" />
+      <point x="3530.071257215006" y="1940.0" />
+      <point x="-167.625" y="180.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.restaurants.Restaurant">
+      <point x="-136.32499999999982" y="-114.0" />
+      <point x="2467.962484217172" y="3046.0" />
+      <point x="0.0" y="3046.0" />
+      <point x="0.0" y="705.0" />
+      <point x="639.5" y="705.0" />
+      <point x="-232.75" y="103.5" />
+    </edge>
+    <edge source="delivery_system.controller.MenuController" target="delivery_system.model.menu.Item">
+      <point x="-58.049999999999955" y="-147.5" />
+      <point x="686.7004667207793" y="1880.0" />
+      <point x="584.75" y="1880.0" />
+      <point x="584.75" y="149.0" />
+      <point x="1053.2060222763348" y="149.0" />
+      <point x="-47.59999999999991" y="59.5" />
+    </edge>
+    <edge source="delivery_system.views.account.AccountFrame" target="delivery_system.views.account.AddAccountDialog">
+      <point x="123.30000000000018" y="-103.5" />
+      <point x="3482.569627074315" y="2335.0" />
+      <point x="3820.370463564215" y="2335.0" />
+      <point x="3820.370463564215" y="1940.0" />
+      <point x="3865.321257215006" y="1940.0" />
+      <point x="167.625" y="180.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.Main">
+      <point x="240.0" y="290.5" />
+      <point x="1496.4124842171718" y="2966.0" />
+      <point x="2582.7624842171717" y="2966.0" />
+      <point x="-21.52500000000009" y="-114.0" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.users.Users">
+      <point x="78.92500000000018" y="-114.0" />
+      <point x="2683.212484217172" y="3006.0" />
+      <point x="3026.3060222763347" y="3006.0" />
+      <point x="3026.3060222763347" y="1940.0" />
+      <point x="3024.0248286435776" y="1940.0" />
+      <point x="-8.142857142857338" y="92.5" />
+    </edge>
+    <edge source="delivery_system.controller.MenuController" target="delivery_system.model.menu.Menu">
+      <point x="-19.34999999999991" y="-147.5" />
+      <point x="725.4004667207794" y="1870.0" />
+      <point x="595.75" y="1870.0" />
+      <point x="595.75" y="396.0" />
+      <point x="1058.9726889430017" y="396.0" />
+      <point x="-104.58333333333326" y="103.5" />
+    </edge>
+    <edge source="delivery_system.model.menu.Menu" target="delivery_system.model.menu.Item">
+      <point x="-62.75" y="-103.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="delivery_system.model.restaurants.Restaurant" target="delivery_system.model.menu.Menu">
+      <point x="-133.0" y="-103.5" />
+      <point x="739.25" y="406.0" />
+      <point x="1100.8060222763347" y="406.0" />
+      <point x="-62.75" y="103.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.model.users.User">
+      <point x="144.0" y="-290.5" />
+      <point x="1400.4124842171718" y="2295.0" />
+      <point x="2334.2829635642147" y="2295.0" />
+      <point x="2334.2829635642147" y="695.0" />
+      <point x="2779.612950937951" y="695.0" />
+      <point x="-225.75" y="114.5" />
+    </edge>
+    <edge source="delivery_system.controller.AddAccountController" target="delivery_system.model.users.User">
+      <point x="0.0" y="-59.5" />
+      <point x="3463.696257215006" y="705.0" />
+      <point x="3231.112950937951" y="705.0" />
+      <point x="225.75" y="114.5" />
+    </edge>
+    <edge source="delivery_system.views.account.AccountFrame" target="delivery_system.model.users.Users">
+      <point x="-123.30000000000018" y="-103.5" />
+      <point x="3235.9696270743148" y="2325.0" />
+      <point x="3047.8722492785005" y="2325.0" />
+      <point x="3047.8722492785005" y="1940.0" />
+      <point x="3040.310542929292" y="1940.0" />
+      <point x="8.142857142856883" y="92.5" />
+    </edge>
+    <edge source="delivery_system.controller.AddAccountController" target="delivery_system.model.users.Users">
+      <point x="-77.59999999999991" y="-59.5" />
+      <point x="3386.0962572150065" y="1900.0" />
+      <point x="3121.7391143578634" y="1900.0" />
+      <point x="89.57142857142844" y="92.5" />
+    </edge>
+    <edge source="delivery_system.controller.RestoMangeController" target="delivery_system.views.RestoManageView">
+      <point x="154.22222222222217" y="-126.0" />
+      <point x="1285.9726889430015" y="1940.0" />
+      <point x="1645.6579635642147" y="1940.0" />
+      <point x="-135.625" y="532.5" />
+    </edge>
+    <edge source="delivery_system.controller.RestoMangeController" target="delivery_system.model.restaurants.Restaurants">
+      <point x="-77.11111111111109" y="-126.0" />
+      <point x="1054.6393556096682" y="1810.0" />
+      <point x="870.4250000000002" y="1810.0" />
+      <point x="116.0" y="92.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.users.User">
+      <point x="35.875" y="-114.0" />
+      <point x="2640.162484217172" y="2976.0" />
+      <point x="2907.306022276335" y="2976.0" />
+      <point x="2907.306022276335" y="705.0" />
+      <point x="2908.612950937951" y="705.0" />
+      <point x="-96.75" y="114.5" />
+    </edge>
+    <edge source="delivery_system.controller.MenuController" target="delivery_system.views.MenuView">
+      <point x="-135.44999999999993" y="-147.5" />
+      <point x="609.3004667207792" y="1900.0" />
+      <point x="506.0" y="1900.0" />
+      <point x="171.75" y="158.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.menu.Item">
+      <point x="136.32499999999982" y="-114.0" />
+      <point x="2740.6124842171716" y="3046.0" />
+      <point x="3931.696257215006" y="3046.0" />
+      <point x="3931.696257215006" y="139.0" />
+      <point x="1196.006022276335" y="139.0" />
+      <point x="95.20000000000005" y="59.5" />
+    </edge>
+    <edge source="delivery_system.model.LoginModel" target="delivery_system.model.users.Users">
+      <point x="51.0" y="-37.0" />
+      <point x="2845.806022276335" y="1920.0" />
+      <point x="2975.167685786435" y="1920.0" />
+      <point x="-57.0" y="92.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.views.MenuView">
+      <point x="-192.0" y="-290.5" />
+      <point x="1064.4124842171718" y="2305.0" />
+      <point x="323.9355429292923" y="2305.0" />
+      <point x="323.9355429292923" y="1900.0" />
+      <point x="277.0" y="1900.0" />
+      <point x="-57.25" y="158.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.views.MainView">
+      <point x="-78.92499999999973" y="-114.0" />
+      <point x="2525.362484217172" y="3006.0" />
+      <point x="124.9355429292923" y="3006.0" />
+      <point x="124.9355429292923" y="2335.0" />
+      <point x="116.9355429292923" y="2335.0" />
+      <point x="-79.5" y="48.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.menu.Menu">
+      <point x="7.175000000000182" y="-114.0" />
+      <point x="2611.462484217172" y="2956.0" />
+      <point x="2664.2829635642147" y="2956.0" />
+      <point x="2664.2829635642147" y="406.0" />
+      <point x="1226.3060222763347" y="406.0" />
+      <point x="62.75" y="103.5" />
+    </edge>
+    <edge source="delivery_system.controller.LoginController" target="delivery_system.model.users.User">
+      <point x="14.5" y="-48.0" />
+      <point x="3163.946257215006" y="705.0" />
+      <point x="3166.612950937951" y="705.0" />
+      <point x="161.25" y="114.5" />
+    </edge>
+    <edge source="delivery_system.controller.RestoMangeController" target="delivery_system.model.menu.Menu">
+      <point x="77.11111111111109" y="-126.0" />
+      <point x="1208.8615778318904" y="1940.0" />
+      <point x="1228.2829635642147" y="1940.0" />
+      <point x="1228.2829635642147" y="416.0" />
+      <point x="1184.4726889430017" y="416.0" />
+      <point x="20.916666666666742" y="103.5" />
+    </edge>
+    <edge source="delivery_system.views.account.AccountFrame" target="delivery_system.controller.AddAccountController">
+      <point x="68.5" y="-103.5" />
+      <point x="3427.769627074315" y="2315.0" />
+      <point x="3512.196257215006" y="2315.0" />
+      <point x="48.5" y="59.5" />
+    </edge>
+    <edge source="delivery_system.controller.LoginController" target="delivery_system.Main">
+      <point x="-58.0" y="48.0" />
+      <point x="3091.084593704906" y="2335.0" />
+      <point x="3118.0415223665227" y="2335.0" />
+      <point x="3118.0415223665227" y="3016.0" />
+      <point x="2697.562484217172" y="3016.0" />
+      <point x="93.27500000000009" y="-114.0" />
+    </edge>
+    <edge source="delivery_system.controller.MenuController" target="delivery_system.model.restaurants.Restaurant">
+      <point x="174.14999999999986" y="-147.5" />
+      <point x="918.9004667207791" y="1940.0" />
+      <point x="940.9504667207793" y="1940.0" />
+      <point x="940.9504667207793" y="695.0" />
+      <point x="905.5" y="695.0" />
+      <point x="33.25" y="103.5" />
+    </edge>
+    <edge source="delivery_system.views.account.AccountFrame" target="delivery_system.controller.LoginController">
+      <point x="-95.90000000000009" y="-103.5" />
+      <point x="3263.369627074315" y="2315.0" />
+      <point x="3149.084593704906" y="2315.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.model.users.Users">
+      <point x="240.0" y="-290.5" />
+      <point x="1496.4124842171718" y="2315.0" />
+      <point x="2356.2829635642147" y="2315.0" />
+      <point x="2356.2829635642147" y="1900.0" />
+      <point x="2942.5962572150065" y="1900.0" />
+      <point x="-89.57142857142844" y="92.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.restaurants.Restaurants">
+      <point x="-107.625" y="-114.0" />
+      <point x="2496.662484217172" y="3026.0" />
+      <point x="68.9355429292923" y="3026.0" />
+      <point x="68.9355429292923" y="1930.0" />
+      <point x="667.4250000000002" y="1930.0" />
+      <point x="-87.0" y="92.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.controller.RestoMangeController">
+      <point x="0.0" y="-290.5" />
+      <point x="1256.4124842171718" y="2335.0" />
+      <point x="1218.5004667207793" y="2335.0" />
+      <point x="86.75" y="126.0" />
+    </edge>
+    <edge source="delivery_system.controller.LoginController" target="delivery_system.model.users.Users">
+      <point x="-43.5" y="-48.0" />
+      <point x="3105.584593704906" y="1930.0" />
+      <point x="3072.8819715007207" y="1930.0" />
+      <point x="40.71428571428578" y="92.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.model.users.Roles">
+      <point x="336.0" y="-290.5" />
+      <point x="1592.4124842171718" y="2335.0" />
+      <point x="2446.7829635642147" y="2335.0" />
+      <point x="-69.0" y="69.5" />
+    </edge>
+    <edge source="delivery_system.controller.LoginController" target="delivery_system.views.account.LoginView">
+      <point x="72.5" y="-48.0" />
+      <point x="3221.584593704906" y="1940.0" />
+      <point x="3262.571257215006" y="1940.0" />
+      <point x="-29.375" y="81.0" />
+    </edge>
+    <edge source="delivery_system.views.account.AccountFrame" target="delivery_system.views.account.LoginView">
+      <point x="13.699999999999818" y="-103.5" />
+      <point x="3372.9696270743148" y="2335.0" />
+      <point x="3356.196257215006" y="2335.0" />
+      <point x="3356.196257215006" y="1940.0" />
+      <point x="3380.071257215006" y="1940.0" />
+      <point x="88.125" y="81.0" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.controller.MenuController">
+      <point x="-144.0" y="-290.5" />
+      <point x="1112.4124842171718" y="2295.0" />
+      <point x="648.0004667207793" y="2295.0" />
+      <point x="-96.75" y="147.5" />
+    </edge>
+    <edge source="delivery_system.model.LoginModel" target="delivery_system.model.users.User">
+      <point x="-51.0" y="-37.0" />
+      <point x="2743.806022276335" y="705.0" />
+      <point x="2844.112950937951" y="705.0" />
+      <point x="-161.25" y="114.5" />
+    </edge>
+    <edge source="delivery_system.model.restaurants.Restaurants" target="delivery_system.model.restaurants.Restaurant">
+      <point x="-65.25" y="-92.5" />
+      <point x="689.1750000000002" y="705.0" />
+      <point x="706.0" y="705.0" />
+      <point x="-166.25" y="103.5" />
+    </edge>
+    <edge source="delivery_system.controller.MenuController" target="delivery_system.model.restaurants.Restaurants">
+      <point x="96.75" y="-147.5" />
+      <point x="841.5004667207793" y="1840.0" />
+      <point x="783.4250000000002" y="1840.0" />
+      <point x="29.0" y="92.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.views.account.AccountFrame">
+      <point x="107.625" y="-114.0" />
+      <point x="2711.912484217172" y="3026.0" />
+      <point x="3290.769627074315" y="3026.0" />
+      <point x="-68.5" y="103.5" />
+    </edge>
+    <edge source="delivery_system.controller.MainController" target="delivery_system.views.RestoManageView">
+      <point x="48.0" y="-290.5" />
+      <point x="1304.4124842171718" y="2275.0" />
+      <point x="1959.8629509379512" y="2275.0" />
+      <point x="1959.8629509379512" y="1940.0" />
+      <point x="1916.9079635642147" y="1940.0" />
+      <point x="135.625" y="532.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.model.users.Roles">
+      <point x="-7.175000000000182" y="-114.0" />
+      <point x="2597.1124842171716" y="2956.0" />
+      <point x="2584.7829635642147" y="2956.0" />
+      <point x="69.0" y="69.5" />
+    </edge>
+    <edge source="delivery_system.Main" target="delivery_system.controller.MainController">
+      <point x="-35.875" y="-114.0" />
+      <point x="2568.412484217172" y="2976.0" />
+      <point x="1256.4124842171718" y="2976.0" />
+      <point x="0.0" y="290.5" />
+    </edge>
+    <edge source="delivery_system.model.users.Users" target="delivery_system.model.users.User">
+      <point x="76.0" y="-92.5" />
+      <point x="3108.167685786435" y="705.0" />
+      <point x="3102.112950937951" y="705.0" />
+      <point x="96.75" y="114.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5" x="1736.4999999999995" y="2044.5277777777774" />
+  <SelectedNodes>
+    <node>delivery_system.views.RestoManageView</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

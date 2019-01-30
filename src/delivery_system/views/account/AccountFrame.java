@@ -1,21 +1,19 @@
 package delivery_system.views.account;
 
+import delivery_system.controller.AddAccountController;
 import delivery_system.controller.LoginController;
 import delivery_system.model.users.Users;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Vector;
 
 import javax.swing.*;
 
 public class AccountFrame {
-    private Users users;
+    private Users model;
     private JFrame frame;
     public JButton btnConnect;
     public JButton btnNewClient;
@@ -25,7 +23,7 @@ public class AccountFrame {
      * Create the application.
      */
     public AccountFrame(Users model) {
-        this.users = model;
+        this.model = model;
         initialize();
     }
 
@@ -54,12 +52,13 @@ public class AccountFrame {
         }
 
         LoginView loginView = new LoginView();
-        LoginController loginController = new LoginController(users, loginView);
+        LoginController loginController = new LoginController(model, loginView);
         loginView.getBtnNewClient().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                System.out.println("New Account");
+                AddAccountDialog addAccountDialog = new AddAccountDialog();
+                AddAccountController addAccountController = new AddAccountController(model, addAccountDialog);
             }
         });
         frame.add(loginView, BorderLayout.CENTER);

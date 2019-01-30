@@ -133,6 +133,7 @@ public class MenuController {
         for (Restaurant s : model.getRestaurants()) {
             listModel.addElement(s.getName());
         }
+
         this.view.getListRestaurants().setModel(listModel);
         this.view.getListRestaurants().addListSelectionListener(new ListSelectionListener() {
             @Override

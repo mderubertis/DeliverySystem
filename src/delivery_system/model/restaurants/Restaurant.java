@@ -17,7 +17,7 @@ public class Restaurant {
     private String name;
     private String address;
     private String phone;
-    private JSONObject hours; // may change depending on input collection
+    private JSONObject hours;
     private String[] delieveryArea;
     private Menu menu;
 
