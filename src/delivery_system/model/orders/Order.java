@@ -3,6 +3,8 @@ package delivery_system.model.orders;
 import delivery_system.model.menu.Item;
 import delivery_system.model.restaurants.Restaurant;
 
+import java.util.Arrays;
+
 /**
  * Delivery System
  *
@@ -15,17 +17,15 @@ public class Order {
     private String status;
     private String deliveryDate;
     private String deliveryTime;
-    private String postalCode;
     private Restaurant restaurant;
     private Item[] items;
     private String phone;
-    private String[] deliveryArea;
+    private String deliveryArea;
 
-    public Order(String status, String deliveryDate, String deliveryTime, String postalCode, Restaurant restaurant, Item[] items, String phone, String[] deliveryArea) {
+    public Order(String status, String deliveryDate, String deliveryTime, Restaurant restaurant, Item[] items, String phone, String deliveryArea) {
         this.status = status;
         this.deliveryDate = deliveryDate;
         this.deliveryTime = deliveryTime;
-        this.postalCode = postalCode;
         this.restaurant = restaurant;
         this.items = items;
         this.phone = phone;
@@ -44,10 +44,6 @@ public class Order {
         return deliveryTime;
     }
 
-    public String getPostalCode() {
-        return postalCode;
-    }
-
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -60,7 +56,24 @@ public class Order {
         return phone;
     }
 
-    public String[] getDeliveryArea() {
+    public String getDeliveryArea() {
         return deliveryArea;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "status='" + status + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", deliveryTime='" + deliveryTime + '\'' +
+                ", restaurant=" + restaurant +
+                ", items=" + Arrays.toString(items) +
+                ", phone='" + phone + '\'' +
+                ", deliveryArea='" + deliveryArea + '\'' +
+                '}';
     }
 }

@@ -7,20 +7,21 @@ import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.text.DateFormatter;
 import javax.swing.text.MaskFormatter;
 
 public class OrderView extends JInternalFrame {
 
     private final JTable table;
-	private JFormattedTextField textField;
 	private final JLabel lblViewTitle;
 	private final JPanel mainPanel;
     private final JList list;
     private final JButton btnAcceptOrder;
     private final JButton btnOrderReady;
+    private final JSpinner snDate;
+    private final JTextField txtStatus;
+    private JFormattedTextField ftxtPostal;
 
 
     /**
@@ -62,22 +63,36 @@ public class OrderView extends JInternalFrame {
 		JLabel lblDeliveryTime = new JLabel("Delivery Time (yyyy/mm/dd hh:mm)");
 		panel_14.add(lblDeliveryTime);
 
-		textField = new JFormattedTextField(createFormatter("####-##-## ##:##"));
-        textField.setColumns(17);
-		textField.setMargin(new Insets(2, 2, 2, 80));
-		textField.setColumns(10);
-		panel_14.add(textField);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        snDate = new JSpinner(new SpinnerDateModel());
+        snDate.setValue(new Date());
+        snDate.setEnabled(false);
+        JSpinner.DateEditor editor = new JSpinner.DateEditor(snDate, sdf.toPattern());
+        snDate.setEditor(editor);
+        DateFormatter formatter = (DateFormatter)editor.getTextField().getFormatter();
+        formatter.setAllowsInvalid(false);
+        formatter.setOverwriteMode(true);
+		panel_14.add(snDate);
 
 		JLabel lblPostalCode = new JLabel("Postal Code");
 		panel_14.add(lblPostalCode);
 
-        JFormattedTextField ftxtPostal = null;
+        ftxtPostal = null;
         try {
-            ftxtPostal = new JFormattedTextField(new MaskFormatter("U#U #U#"));
+            ftxtPostal = new JFormattedTextField(new MaskFormatter("#U#"));
+            ftxtPostal.setEnabled(false);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         panel_14.add(ftxtPostal);
+
+        JLabel lblOrderStatus = new JLabel("Order Status");
+        panel_14.add(lblOrderStatus);
+
+        txtStatus = new JTextField();
+        txtStatus.setEnabled(false);
+        panel_14.add(txtStatus);
+        txtStatus.setColumns(10);
 
 		JPanel panel_6 = new JPanel();
 		panel.add(panel_6);
@@ -96,6 +111,7 @@ public class OrderView extends JInternalFrame {
 		table = new JTable();
 		table.setShowGrid(false);
 		table.setFillsViewportHeight(true);
+		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 
 		JTableHeader tableHeader = table.getTableHeader();
@@ -111,6 +127,7 @@ public class OrderView extends JInternalFrame {
 		panel_13.setPreferredSize(new Dimension(343, 90));
 
         btnAcceptOrder = new JButton("Accept Order");
+        btnAcceptOrder.setEnabled(false);
 		panel_13.add(btnAcceptOrder);
 
         btnOrderReady = new JButton("Order Ready");
@@ -140,6 +157,18 @@ public class OrderView extends JInternalFrame {
         return mainPanel;
     }
 
+    public JFormattedTextField getFtxtPostal() {
+        return ftxtPostal;
+    }
+
+    public JSpinner getSnDate() {
+        return snDate;
+    }
+
+    public JTextField getTxtStatus() {
+        return txtStatus;
+    }
+
     public JList getList() {
         return list;
     }
@@ -158,15 +187,5 @@ public class OrderView extends JInternalFrame {
 
     public JButton getBtnOrderReady() {
         return btnOrderReady;
-    }
-
-    private MaskFormatter createFormatter(String s) {
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter(s);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return formatter;
     }
 }

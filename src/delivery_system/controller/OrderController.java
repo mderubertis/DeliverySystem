@@ -1,10 +1,14 @@
 package delivery_system.controller;
 
+import delivery_system.Main;
 import delivery_system.model.menu.Item;
 import delivery_system.model.orders.Order;
 import delivery_system.model.orders.Orders;
+import delivery_system.model.orders.Status;
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
+import delivery_system.model.users.Roles;
+import delivery_system.model.users.User;
 import delivery_system.views.OrderView;
 import delivery_system.views.RestoManageView;
 
@@ -13,7 +17,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.Date;
 
 /**
  * Delivery System
@@ -29,6 +36,8 @@ class OrderController {
     Orders model;
     OrderView view;
     Order currentOrder;
+    User activeUser = Main.getUsers().getActiveUser();
+    private String[] orders;
 
     OrderController(Orders model, OrderView view) {
         this.model = model;
@@ -45,33 +54,21 @@ class OrderController {
         this.view.getContentPane().add(scrPane);
         this.view.setSize(new Dimension(825, 585));
 
-        String[] orders = new String[model.getOrders().size()];
-        if (model.getOrders().size() == 0) {
-            noOrders = true;
-            orders = new String[1];
-            orders[0] = "No restaurants";
-        } else {
-            noOrders = false;
-            for (int i = 0; i < model.getOrders().size(); i++)
-                orders[i] = (i + 1) + " - " + model.getOrder(i).getDeliveryDate() + " " + model.getOrder(i).getDeliveryTime();
-
-        }
-
         listModel = new DefaultListModel<>();
-        for (String s : orders) {
-            listModel.addElement(s);
+        for (Restaurant restaurant : activeUser.getRestaurants()) {
+            for (Order order : model.getOrders()) {
+                if (order.getRestaurant() == restaurant) {
+                    listModel.addElement(order.getDeliveryDate() + " " + order.getDeliveryTime());
+                }
+            }
         }
+
         this.view.getList().setModel(listModel);
         this.view.getList().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
-                    orderTbl.setNumRows(0);
-                    Order order = model.getOrder(view.getList().getSelectedIndex());
-                    for (int i = 0; i < order.getItems().length; i++) {
-                        orderTbl.addRow(new Object[]{order.getItems()[i].getName(), order.getItems()[i].getPrice()});
-                        orderTbl.fireTableDataChanged();
-                    }
+                    viewUpdate();
                 }
             }
         });
@@ -90,6 +87,49 @@ class OrderController {
         this.view.getTable().getColumnModel().getColumn(1).setResizable(false);
         this.view.getTable().getColumnModel().getColumn(1).setPreferredWidth(55);
         this.view.getTable().getColumnModel().getColumn(1).setMaxWidth(55);
+
+        this.view.getBtnAcceptOrder().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentOrder.setStatus(Status.ACCEPTED);
+                viewUpdate();
+            }
+        });
+
+        this.view.getBtnOrderReady().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentOrder.setStatus(Status.READY);
+                viewUpdate();
+            }
+        });
+    }
+
+    private void viewUpdate() {
+        orderTbl.setNumRows(0);
+        currentOrder = model.getOrder(view.getList().getSelectedIndex());
+        for (int i = 0; i < currentOrder.getItems().length; i++) {
+            orderTbl.addRow(new Object[]{currentOrder.getItems()[i].getName(), currentOrder.getItems()[i].getQuantity()});
+            orderTbl.fireTableDataChanged();
+        }
+
+        view.getSnDate().setValue(new Date(currentOrder.getDeliveryDate() + " " + currentOrder.getDeliveryTime()));
+        view.getFtxtPostal().setValue(currentOrder.getDeliveryArea());
+        view.getTxtStatus().setText(currentOrder.getStatus());
+        switch (currentOrder.getStatus()) {
+            case Status.WAITING:
+                view.getBtnAcceptOrder().setEnabled(true);
+                view.getBtnOrderReady().setEnabled(false);
+                break;
+            case Status.ACCEPTED:
+                view.getBtnAcceptOrder().setEnabled(false);
+                view.getBtnOrderReady().setEnabled(true);
+                break;
+            case Status.READY:
+                view.getBtnAcceptOrder().setEnabled(false);
+                view.getBtnOrderReady().setEnabled(false);
+                break;
+        }
     }
 
     public void showView() {

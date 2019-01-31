@@ -1,5 +1,9 @@
 package delivery_system.model.users;
 
+import delivery_system.model.restaurants.Restaurant;
+
+import java.util.Arrays;
+
 /**
  * Delivery System
  *
@@ -16,6 +20,18 @@ public class User {
     private String email;
     private String address;
     private String phone;
+    private Restaurant[] restaurants;
+
+    public User(String accessLvl, String name, String username, String password, String email, String address, String phone, Restaurant[] restaurants) {
+        this.accessLvl = accessLvl;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.restaurants = restaurants;
+    }
 
     public User(String accessLvl, String name, String username, String password, String email, String address, String phone) {
         this.accessLvl = accessLvl;
@@ -37,6 +53,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
+                ", restaurants=" + Arrays.toString(restaurants) +
                 '}';
     }
 
@@ -94,5 +111,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Restaurant[] getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(Restaurant[] restaurants) {
+        this.restaurants = restaurants;
     }
 }

@@ -58,19 +58,21 @@ public class Main {
         amirMenu.addItem(new Item("Kabab", 12.99));
         amirMenu.addItem(new Item("Shish Kabbab", 14.99));
 
-        // Add default users
-        users.addUser(new User(Roles.ADMINISTRATOR, "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
-        users.addUser(new User(Roles.MANAGER, "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
-        users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 1", "deli1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
-        users.addUser(new User(Roles.RESTAURATEUR, "Chef 1", "chef", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
-
         // Add default restaurants
         restaurants.addRestaurant(new Restaurant("McDonald's", "7685 Boulevard Maurice-Duplessis", "(514) 643-2892", new JSONObject("{\"closed\":{\"sunday\":\"11:59\",\"saturday\":\"11:59\",\"tuesday\":\"11:59\",\"wednesday\":\"11:59\",\"thursday\":\"11:59\",\"friday\":\"11:59\",\"monday\":\"11:59\"},\"opened\":{\"sunday\":\"00:00\",\"saturday\":\"00:00\",\"tuesday\":\"00:00\",\"wednesday\":\"00:00\",\"thursday\":\"00:00\",\"friday\":\"00:00\",\"monday\":\"00:00\"}}"), new String[]{"1K1"}, mcdMenu));
         restaurants.addRestaurant(new Restaurant("Amir", "7685 Boulevard Maurice-Duplessis", "(514) 643-2892", new JSONObject("{\"closed\":{\"sunday\":\"11:59\",\"saturday\":\"11:59\",\"tuesday\":\"11:59\",\"wednesday\":\"11:59\",\"thursday\":\"11:59\",\"friday\":\"11:59\",\"monday\":\"11:59\"},\"opened\":{\"sunday\":\"00:00\",\"saturday\":\"00:00\",\"tuesday\":\"00:00\",\"wednesday\":\"00:00\",\"thursday\":\"00:00\",\"friday\":\"00:00\",\"monday\":\"00:00\"}}"), new String[]{"1K1"}, amirMenu));
 
+        // Add default users
+        users.addUser(new User(Roles.ADMINISTRATOR, "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.addUser(new User(Roles.MANAGER, "Manager", "manager1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[] {restaurants.getRestaurant(0)}));
+        users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 1", "deli1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.addUser(new User(Roles.RESTAURATEUR, "Chef 1", "chef_amir", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[] {restaurants.getRestaurant(1)}));
+        users.addUser(new User(Roles.RESTAURATEUR, "Chef 2", "chef_mcd", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[] {restaurants.getRestaurant(0)}));
+
         // Add default orders
-        orders.addOrder(new Order(Status.WAITING, "2019-02-03", "12:00", "3E1", restaurants.getRestaurant(0), new Item[] {amirMenu.getItem(0), amirMenu.getItem(2)}, "(514) 935-7494", new String[] {"3E1"}));
-        orders.addOrder(new Order(Status.WAITING, "2019-02-14", "13:00", "3E1", restaurants.getRestaurant(0), new Item[] {amirMenu.getItem(0)}, "(514) 935-7494", new String[] {"3E1"}));
+        orders.addOrder(new Order(Status.WAITING, "2019/02/03", "12:00", restaurants.getRestaurant(1), new Item[] {new Item(amirMenu.getItem(0).getName(), amirMenu.getItem(0).getPrice(), 2), amirMenu.getItem(2)}, "(514) 935-7494", "3E1"));
+        orders.addOrder(new Order(Status.ACCEPTED, "2019/02/14", "13:00", restaurants.getRestaurant(1), new Item[] {amirMenu.getItem(0)}, "(514) 935-7494", "3E1"));
+        orders.addOrder(new Order(Status.WAITING, "2019/02/16", "16:00", restaurants.getRestaurant(0), new Item[] {mcdMenu.getItem(0)}, "(514) 935-7494", "3E1"));
 
         // Launch account/new user window
         accountFrame = new AccountFrame(users);
