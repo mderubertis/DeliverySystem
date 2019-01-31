@@ -24,7 +24,7 @@ import java.util.Iterator;
  * @date 2019-01-21
  */
 public class RestoMangeController {
-    Restaurants model = new Restaurants();
+    Restaurants model;
     RestoManageView view;
     boolean edit = false;
     boolean editAllTimes = false;

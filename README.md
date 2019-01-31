@@ -57,7 +57,7 @@
 
 The purpose of this specification is to define the requirements and developments of the Restaurant
 Delivery System. This system will keep track of delivery men, restaurant managers, clients, system
-administrators, restaurants and menus.
+administrators, restaurant and menus.
 
 Your application will allow Administrators to add new Restaurant, edit them and delete them. Each
 Restaurant can then have a menu which can be edited and deleted. An administrator can also add a Delivery

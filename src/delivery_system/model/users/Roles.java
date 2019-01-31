@@ -12,5 +12,5 @@ public class Roles {
     public static final String MANAGER = "manager";
     public static final String DELIVERY_MAN = "deliveryMan";
     public static final String CLIENT = "client";
-    public static final String RESTAURANTEUR = "chef";
+    public static final String RESTAURATEUR = "chef";
 }

@@ -5,6 +5,7 @@ package delivery_system.views;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -77,21 +78,29 @@ public class MenuView extends JInternalFrame {
         lblViewTitle.setHorizontalAlignment(SwingConstants.CENTER);
         lblViewTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
 
+        JScrollPane scrollPane = new JScrollPane();
         tblMenu = new JTable();
         tblMenu.setShowHorizontalLines(false);
         tblMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tblMenu.setFillsViewportHeight(true);
         tblMenu.setBorder(new LineBorder(Color.LIGHT_GRAY));
+        scrollPane.setViewportView(tblMenu);
+
+        JTableHeader tableHeader = tblMenu.getTableHeader();
+        tableHeader.setReorderingAllowed(false);
+        tableHeader.setResizingAllowed(false);
+        scrollPane.setColumnHeaderView(tableHeader);
+
         GroupLayout gl_panel_3 = new GroupLayout(panel_3);
         gl_panel_3.setHorizontalGroup(gl_panel_3.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(tblMenu, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                 .addGroup(gl_panel_3.createSequentialGroup().addGap(33).addComponent(lblViewTitle).addContainerGap(34,
                         Short.MAX_VALUE)));
         gl_panel_3.setVerticalGroup(gl_panel_3.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(gl_panel_3.createSequentialGroup()
                         .addComponent(lblViewTitle, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tblMenu, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)));
+                        .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)));
         panel_3.setLayout(gl_panel_3);
 
         JPanel panel_2 = new JPanel();

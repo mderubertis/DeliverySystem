@@ -3,6 +3,9 @@ package delivery_system;
 import delivery_system.controller.MainController;
 import delivery_system.model.menu.Item;
 import delivery_system.model.menu.Menu;
+import delivery_system.model.orders.Order;
+import delivery_system.model.orders.Orders;
+import delivery_system.model.orders.Status;
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
 import delivery_system.model.users.Roles;
@@ -27,6 +30,7 @@ public class Main {
     private static Users users;
     private static Restaurants restaurants;
     private static AccountFrame accountFrame;
+    private static Orders orders;
 
     /**
      * The entry point of application.
@@ -37,7 +41,9 @@ public class Main {
         // Initalize models and default data
         users = new Users();
         restaurants = new Restaurants();
+        orders = new Orders();
 
+        // McDonald's Menu
         Menu mcdMenu = new Menu();
         mcdMenu.addItem(new Item("Sausage n' Egg McMuffin", 3.89));
         mcdMenu.addItem(new Item("Sausage McMuffin", 1.99));
@@ -45,6 +51,7 @@ public class Main {
         mcdMenu.addItem(new Item("Big Mac", 5.59));
         mcdMenu.addItem(new Item("Double Big Mac", 6.99));
 
+        // Amir Menu
         Menu amirMenu = new Menu();
         amirMenu.addItem(new Item("Tabbouleh", 4.99));
         amirMenu.addItem(new Item("Shish Taouk", 12.99));
@@ -55,12 +62,15 @@ public class Main {
         users.addUser(new User(Roles.ADMINISTRATOR, "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User(Roles.MANAGER, "Manager", "manager", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 1", "deli1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
+        users.addUser(new User(Roles.RESTAURATEUR, "Chef 1", "chef", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
 
         // Add default restaurants
         restaurants.addRestaurant(new Restaurant("McDonald's", "7685 Boulevard Maurice-Duplessis", "(514) 643-2892", new JSONObject("{\"closed\":{\"sunday\":\"11:59\",\"saturday\":\"11:59\",\"tuesday\":\"11:59\",\"wednesday\":\"11:59\",\"thursday\":\"11:59\",\"friday\":\"11:59\",\"monday\":\"11:59\"},\"opened\":{\"sunday\":\"00:00\",\"saturday\":\"00:00\",\"tuesday\":\"00:00\",\"wednesday\":\"00:00\",\"thursday\":\"00:00\",\"friday\":\"00:00\",\"monday\":\"00:00\"}}"), new String[]{"1K1"}, mcdMenu));
         restaurants.addRestaurant(new Restaurant("Amir", "7685 Boulevard Maurice-Duplessis", "(514) 643-2892", new JSONObject("{\"closed\":{\"sunday\":\"11:59\",\"saturday\":\"11:59\",\"tuesday\":\"11:59\",\"wednesday\":\"11:59\",\"thursday\":\"11:59\",\"friday\":\"11:59\",\"monday\":\"11:59\"},\"opened\":{\"sunday\":\"00:00\",\"saturday\":\"00:00\",\"tuesday\":\"00:00\",\"wednesday\":\"00:00\",\"thursday\":\"00:00\",\"friday\":\"00:00\",\"monday\":\"00:00\"}}"), new String[]{"1K1"}, amirMenu));
 
-        System.out.println(Arrays.toString(restaurants.getRestaurants().toArray()));
+        // Add default orders
+        orders.addOrder(new Order(Status.WAITING, "2019-02-03", "12:00", "3E1", restaurants.getRestaurant(0), new Item[] {amirMenu.getItem(0), amirMenu.getItem(2)}, "(514) 935-7494", new String[] {"3E1"}));
+        orders.addOrder(new Order(Status.WAITING, "2019-02-14", "13:00", "3E1", restaurants.getRestaurant(0), new Item[] {amirMenu.getItem(0)}, "(514) 935-7494", new String[] {"3E1"}));
 
         // Launch account/new user window
         accountFrame = new AccountFrame(users);
@@ -116,5 +126,14 @@ public class Main {
      */
     public static Restaurants getRestaurants() {
         return restaurants;
+    }
+
+    /**
+     * Gets orders.
+     *
+     * @return the orders
+     */
+    public static Orders getOrders() {
+        return orders;
     }
 }

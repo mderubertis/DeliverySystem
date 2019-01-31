@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class Orders {
     private ArrayList<Order> orders;
 
-    public Orders(ArrayList<Order> orders) {
-        this.orders = orders;
+    public Orders() {
+        this.orders = new ArrayList<>();
     }
 
     public ArrayList<Order> getOrders() {

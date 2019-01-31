@@ -6,7 +6,9 @@ import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
 import delivery_system.views.MainView;
 import delivery_system.views.MenuView;
+import delivery_system.views.OrderView;
 import delivery_system.views.RestoManageView;
+import delivery_system.views.account.ManageUsers;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,9 +23,11 @@ import java.net.URL;
  * @date 2019-01-21
  */
 public class MainController implements ActionListener {
+    private final OrderView ordersView;
+    private final OrderController ordersController;
     private MenuController menuController;
     private MenuView menuView;
-    Users model = new Users();
+    Users model;
     MainView view;
 
     private String role;
@@ -42,6 +46,8 @@ public class MainController implements ActionListener {
     private final RestoMangeController restoMangeController;
     private final JMenuBar menuBar;
     private JMenuItem mntmView_orders;
+    private JMenu mnOrders;
+    private JMenuItem mntmUserMan_resto;
 
     public MainController(Users model, MainView view) {
         this.model = model;
@@ -78,7 +84,7 @@ public class MainController implements ActionListener {
         role = activeUser.getAccessLvl();
 
         // Check permissions and create menu bar
-        switch (activeUser.getAccessLvl()) {
+        switch (role) {
             case Roles.ADMINISTRATOR:
                 setupAdminMenuBar();
                 role_readable = Roles.ADMINISTRATOR;
@@ -91,6 +97,10 @@ public class MainController implements ActionListener {
                 setupDeliveryManMenuBar();
                 role_readable = "delivery man";
                 break;
+            case Roles.RESTAURATEUR:
+                setupChefMenuBar();
+                role_readable = "restaurateur";
+                break;
         }
 
         // Create child views but hidden, and visible on menu item click
@@ -102,9 +112,22 @@ public class MainController implements ActionListener {
         menuController = new MenuController(Main.getRestaurants(), menuView);
         view.getContentPane().add(menuView);
 
+        ordersView = new OrderView();
+        ordersController = new OrderController(Main.getOrders(), ordersView);
+        view.getContentPane().add(ordersView);
+
         // View setup
         view.setTitle("Food Delivery System - [Logged in as " + activeUser.getUsername() + "] (" + role_readable + ")");
         view.setVisible(true);
+    }
+
+    private void setupChefMenuBar() {
+        mnOrders = new JMenu("Orders");
+        menuBar.add(mnOrders);
+
+        mntmView_orders = new JMenuItem("View");
+        mntmView_orders.addActionListener(this);
+        mnOrders.add(mntmView_orders);
     }
 
     public void setupAdminMenuBar() {
@@ -122,6 +145,13 @@ public class MainController implements ActionListener {
         mntmDelete = new JMenuItem("Delete");
         mntmDelete.addActionListener(this);
         mnRestaurant.add(mntmDelete);
+
+        JMenu mnRestoUsers = new JMenu("Users");
+        mnRestaurant.add(mnRestoUsers);
+
+        mntmUserMan_resto = new JMenuItem("Manage");
+        mntmUserMan_resto.addActionListener(this);
+        mnRestoUsers.add(mntmUserMan_resto);
 
         JMenu mnMenu = new JMenu("Menu");
         menuBar.add(mnMenu);
@@ -188,7 +218,7 @@ public class MainController implements ActionListener {
         mntmDelete_menu = new JMenuItem("Delete");
         mnMenu.add(mntmDelete_menu);
 
-        JMenu mnOrders = new JMenu("Orders");
+        mnOrders = new JMenu("Orders");
         menuBar.add(mnOrders);
 
         mntmView_orders = new JMenuItem("View");
@@ -220,7 +250,7 @@ public class MainController implements ActionListener {
                 Main.shutdown();
             }
 
-            if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete) {
+            if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete || menuItem == mntmUserMan_resto) {
 
                 final JComboBox combo = new JComboBox<>(restos);
                 if (menuItem == mntmEdit) {
@@ -247,6 +277,9 @@ public class MainController implements ActionListener {
                     if (selection == 0) {
                         Main.getRestaurants().delRestaurant(combo.getSelectedIndex());
                     }
+                } else if (menuItem == mntmUserMan_resto) {
+                    ManageUsers manageUsers = new ManageUsers();
+                    manageUsers.setVisible(true);
                 } else {
                     restoMangeController.setEdit(false);
                     restoMangeController.showView();
@@ -257,6 +290,11 @@ public class MainController implements ActionListener {
                 menuController.showView();
             }
 
+
+            // RESTAURATEUR
+            if (menuItem == mntmView_orders) {
+                ordersController.showView();
+            }
         }
     }
 }
