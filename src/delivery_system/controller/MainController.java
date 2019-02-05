@@ -54,9 +54,7 @@ public class MainController implements ActionListener {
         this.view = view;
 
         try {
-            URL iconURL = getClass().getResource("/delivery_system/assets/icons8-meal-48.png");
-            ImageIcon icon = new ImageIcon(iconURL);
-            view.setIconImage(icon.getImage());
+            view.setIconImage(new ImageIcon(getClass().getResource("/delivery_system/assets/icons8-meal-48.png")).getImage());
         } catch (Exception e) {
             e.printStackTrace();
         }

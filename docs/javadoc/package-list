@@ -1,9 +1,8 @@
 delivery_system
 delivery_system.controller
-delivery_system.model
 delivery_system.model.menu
 delivery_system.model.orders
-delivery_system.model.restaurant
+delivery_system.model.restaurants
 delivery_system.model.users
 delivery_system.views
 delivery_system.views.account

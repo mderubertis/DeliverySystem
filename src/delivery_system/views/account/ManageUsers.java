@@ -11,27 +11,23 @@ import delivery_system.model.users.User;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import java.awt.GridLayout;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
 import java.awt.Dimension;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
-import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Dialog.ModalityType;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
- * Mod4Project
+ * Delivery System
  *
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @date Jan. 30, 2019
@@ -39,9 +35,15 @@ import java.awt.Dialog.ModalityType;
 public class ManageUsers extends JDialog {
 
     private final JPanel contentPanel = new JPanel();
+    private ArrayList<String> users = new ArrayList<>();
     private JPanel panel_1;
     private JPanel panel;
     private final JComboBox cmbRestaurants;
+    private final JComboBox cmbUsers;
+    private final JButton btnAdd;
+    private final JButton btnEdit;
+    private final JButton btnDelete;
+    private String mode;
 
     /**
      * Create the dialog.
@@ -58,6 +60,9 @@ public class ManageUsers extends JDialog {
         getContentPane().setLayout(new BorderLayout());
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
+
+        users.add("Select a user");
+
         {
             panel_1 = new JPanel();
             panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -72,6 +77,26 @@ public class ManageUsers extends JDialog {
                 for (Restaurant restaurant : Main.getRestaurants().getRestaurants()) {
                     cmbRestaurants.addItem(restaurant.getName());
                 }
+                cmbRestaurants.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        users.clear();
+                        users.add("Select a user");
+                        if (cmbRestaurants.getSelectedIndex() > 0)
+                            for (User user : Main.getUsers().getUsers()) {
+                                if (user.getRestaurants() != null)
+                                    for (Restaurant restaurant : user.getRestaurants()) {
+                                        if (restaurant.getName() == cmbRestaurants.getSelectedItem())
+                                            users.add(user.getName() + " (" + user.getUsername() + ")");
+                                    }
+                            }
+                        cmbUsers.setModel(new DefaultComboBoxModel(users.toArray()));
+                        cmbUsers.setEnabled(users.size() > 1);
+                        btnAdd.setEnabled(cmbRestaurants.getSelectedIndex() > 0);
+                        btnEdit.setEnabled(cmbUsers.getSelectedIndex() > 0);
+                        btnDelete.setEnabled(cmbUsers.getSelectedIndex() > 0);
+                    }
+                });
             }
         }
         {
@@ -81,17 +106,17 @@ public class ManageUsers extends JDialog {
                 panel.add(lblSelectUser);
             }
             {
-                JComboBox comboBox = new JComboBox();
-                comboBox.setModel(new DefaultComboBoxModel(new String[]{"Select user"}));
-                for (User user : Main.getUsers().getUsers()) {
-                    if (user.getRestaurants() != null)
-                        for (Restaurant restaurant : user.getRestaurants()) {
-                            if (restaurant.getName().equals(cmbRestaurants.getSelectedItem())) {
-                                comboBox.addItem(user.getUsername() + " (" + user.getName() + ")");
-                            }
-                        }
-                }
-                panel.add(comboBox);
+                cmbUsers = new JComboBox();
+                cmbUsers.setModel(new DefaultComboBoxModel(users.toArray()));
+                cmbUsers.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        btnEdit.setEnabled(cmbUsers.getSelectedIndex() > 0);
+                        btnDelete.setEnabled(cmbUsers.getSelectedIndex() > 0);
+                    }
+                });
+                cmbUsers.setEnabled(false);
+                panel.add(cmbUsers);
             }
         }
 
@@ -113,19 +138,65 @@ public class ManageUsers extends JDialog {
                 .addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE)));
 
-        JLabel lblRole = new JLabel("Role");
-        panel.add(lblRole);
+//        JLabel lblRole = new JLabel("Role");
+//        panel.add(lblRole);
+//
+//        JComboBox comboBox = new JComboBox(new DefaultComboBoxModel(new String[]{"Select role", Roles.ADMINISTRATOR, Roles.MANAGER, Roles.RESTAURATEUR}));
+//        comboBox.setEnabled(false);
+//        panel.add(comboBox);
 
-        JComboBox comboBox = new JComboBox(new DefaultComboBoxModel(new String[]{"Select role", Roles.ADMINISTRATOR, Roles.MANAGER, Roles.RESTAURATEUR}));
-        panel.add(comboBox);
+        AccountDialog accountDialog = new AccountDialog();
+        ImageIcon taken = new ImageIcon(getClass().getResource("/delivery_system/assets/icons8-cancel-24.png"));
+        ImageIcon available = new ImageIcon(getClass().getResource("/delivery_system/assets/icons8-ok-24.png"));
 
-        JButton btnAdd = new JButton("Add");
+        accountDialog.getTxtUsername().addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+                JTextField txtUsername = (JTextField) e.getSource();
+                User userSearch = Main.getUsers().getUser(txtUsername.getText());
+                if (userSearch != null && userSearch.getUsername().equals(txtUsername.getText())) {
+                    accountDialog.getLblAvailable().setIcon(taken);
+                } else {
+                    accountDialog.getLblAvailable().setIcon(available);
+                }
+            }
+        });
+
+        accountDialog.getOkButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User newUser = new User(Roles.CLIENT, accountDialog.getTxtFname().getText() + " " + accountDialog.getTxtLname().getText(), accountDialog.getTxtUsername().getText(), accountDialog.getPasswordField().getPassword().toString(), accountDialog.getTxtEmail().getText(), accountDialog.getTxtAddress().getText(), accountDialog.getPhone());
+                switch (mode) {
+                    case "add":
+                        String[] rolesAvailable = { Roles.MANAGER, Roles.RESTAURATEUR, Roles.DELIVERY_MAN };
+                        String selectedValue = (String) JOptionPane.showInputDialog( accountDialog, "Select the desired role for the user", "User role",
+                                JOptionPane.QUESTION_MESSAGE,
+                                null,
+                                rolesAvailable,
+                                rolesAvailable[ 0 ] );
+                        newUser.setAccessLvl(selectedValue);
+                        System.out.println(newUser.getAccessLvl());
+                        break;
+                }
+            }
+        });
+
+        btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mode = "add";
+                accountDialog.setVisible(true);
+            }
+        });
+        btnAdd.setEnabled(false);
         panel_2.add(btnAdd);
 
-        JButton btnEdit = new JButton("Edit");
+        btnEdit = new JButton("Edit");
+        btnEdit.setEnabled(false);
         panel_2.add(btnEdit);
 
-        JButton btnDelete = new JButton("Delete");
+        btnDelete = new JButton("Delete");
+        btnDelete.setEnabled(false);
         panel_2.add(btnDelete);
         contentPanel.setLayout(gl_contentPanel);
         {

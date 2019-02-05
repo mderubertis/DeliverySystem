@@ -55,10 +55,12 @@ class OrderController {
         this.view.setSize(new Dimension(825, 585));
 
         listModel = new DefaultListModel<>();
-        for (Restaurant restaurant : activeUser.getRestaurants()) {
-            for (Order order : model.getOrders()) {
-                if (order.getRestaurant() == restaurant) {
-                    listModel.addElement(order.getDeliveryDate() + " " + order.getDeliveryTime());
+        if (activeUser.getRestaurants() != null) {
+            for (Restaurant restaurant : activeUser.getRestaurants()) {
+                for (Order order : model.getOrders()) {
+                    if (order.getRestaurant() == restaurant) {
+                        listModel.addElement(order.getDeliveryDate() + " " + order.getDeliveryTime());
+                    }
                 }
             }
         }

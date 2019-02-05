@@ -21,6 +21,7 @@ public class User {
     private String address;
     private String phone;
     private Restaurant[] restaurants;
+    private String[] deliveryArea;
 
     public User(String accessLvl, String name, String username, String password, String email, String address, String phone, Restaurant[] restaurants) {
         this.accessLvl = accessLvl;
@@ -41,6 +42,18 @@ public class User {
         this.email = email;
         this.address = address;
         this.phone = phone;
+    }
+
+    public User(String accessLvl, String name, String username, String password, String email, String address, String phone, Restaurant[] restaurants, String[] deliveryArea) {
+        this.accessLvl = accessLvl;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+        this.restaurants = restaurants;
+        this.deliveryArea = deliveryArea;
     }
 
     @Override

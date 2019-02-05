@@ -57,7 +57,7 @@ public class AccountFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                AddAccountDialog addAccountDialog = new AddAccountDialog();
+                AccountDialog addAccountDialog = new AccountDialog();
                 AddAccountController addAccountController = new AddAccountController(model, addAccountDialog);
             }
         });

@@ -2,16 +2,16 @@ package delivery_system.controller;
 
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
-import delivery_system.views.account.AddAccountDialog;
+import delivery_system.views.account.AccountDialog;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Delivery System
@@ -22,9 +22,9 @@ import java.awt.event.KeyEvent;
  */
 public class AddAccountController {
     Users model;
-    AddAccountDialog view;
+    AccountDialog view;
 
-    public AddAccountController(Users model, AddAccountDialog view) {
+    public AddAccountController(Users model, AccountDialog view) {
         this.model = model;
         this.view = view;
 
@@ -56,18 +56,45 @@ public class AddAccountController {
     }
 
     private boolean isValid() {
+        ArrayList<String> valid = new ArrayList<>();
+        int phonePos = 0;
+
         for (Component component : this.view.getPanForm().getComponents()) {
-            System.out.println(component.getName());
+            boolean fieldError = false;
+
             if (component instanceof JPanel) {
-               for (Component field : ((JPanel) component).getComponents()) {
+                for (Component field : ((JPanel) component).getComponents()) {
+                    if (field instanceof JTextField) {
+                        if (component.getName().equals("panPhone")) {
+                            if (((JTextField) field).getText().trim().length() < 3 && phonePos < 2)
+                                fieldError = true;
+                            else if (((JTextField) field).getText().trim().length() < 4 && phonePos == 2)
+                                fieldError = true;
+                            else
+                                valid.add(component.getName());
 
-                   if (field instanceof JTextField)
-                       System.out.println(field);
-               }
-           }
+                            phonePos++;
+                        } else if (component.getName().equals("panPwd") || component.getName().equals("panPwdConf")) {
+                            if (Arrays.equals(view.getPasswordField().getPassword(), view.getPwdConfirmPassowrd().getPassword()) && view.getPasswordField().getPassword().length >= 8)
+                                valid.add(component.getName());
+                            else
+                                fieldError = true;
+                        } else {
+                            String fieldValue = ((JTextField) field).getText();
+                            if (fieldValue.trim().length() < 5)
+                                fieldError = true;
+                            else
+                                valid.add(component.getName());
+                        }
+                    }
+                }
+            }
 
+            if (fieldError) {
+                JOptionPane.showMessageDialog(null, "Error on field: " + component.getName().replace("pan", ""), "Field Value Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
 
-        return false;
+        return valid.size() == 10;
     }
 }

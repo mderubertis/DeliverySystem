@@ -12,7 +12,7 @@ import java.beans.PropertyChangeListener;
 import java.text.NumberFormat;
 
 /**
- * Mod4Project
+ * Delivery System
  *
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @date Jan. 26, 2019
