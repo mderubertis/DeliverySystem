@@ -4,11 +4,11 @@
 
 ### Document of Specifications
 
-### Version 8.
+### Version 1 (Specification v8)
 
 #### Georgealdly Boursiquot
 
-#### 16 - Jan- 19
+#### 16 - Jan - 19
 
 
 ## Page
