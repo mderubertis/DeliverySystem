@@ -1,6 +1,5 @@
 package delivery_system.controller;
 
-import delivery_system.model.menu.*;
 import delivery_system.model.menu.Menu;
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.restaurants.Restaurants;
@@ -192,7 +191,7 @@ public class RestoMangeController {
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (valid()) {
+                if (isValid()) {
                     StringBuilder messageBuilder = new StringBuilder("Restaurant Name: " + view.getTxtRestoName().getText() + "\n" + "Restaurant Address: " + view.getTxtRestoAddr().getText()
                             + "\n" + "Telephone Number: " + view.getFtxtTelParsed()
                             + "\n\nHours of Operation:\n");
@@ -235,7 +234,7 @@ public class RestoMangeController {
         });
     }
 
-    private boolean valid() {
+    private boolean isValid() {
         int combosValid = 0;
         for (Component component : view.getOpenHoursPanel().getComponents()) {
             if (component instanceof JComboBox)

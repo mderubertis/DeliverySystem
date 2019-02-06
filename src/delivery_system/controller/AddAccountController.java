@@ -1,5 +1,8 @@
 package delivery_system.controller;
 
+import delivery_system.Main;
+import delivery_system.model.restaurants.Restaurant;
+import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
 import delivery_system.views.account.AccountDialog;
@@ -23,6 +26,7 @@ import java.util.Arrays;
 public class AddAccountController {
     Users model;
     AccountDialog view;
+    boolean fromManage = false;
 
     public AddAccountController(Users model, AccountDialog view) {
         this.model = model;
@@ -47,7 +51,10 @@ public class AddAccountController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isValid()) {
-
+                    User newUser = new User(Roles.CLIENT, view.getTxtFname().getText() + " " + view.getTxtLname().getText(), view.getTxtUsername().getText(), String.valueOf(view.getPasswordField().getPassword()), view.getTxtEmail().getText(), view.getTxtAddress().getText(), view.getPhone());
+                    model.addUser(newUser);
+                    JOptionPane.showMessageDialog(view, "Account created succesfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    view.dispose();
                 }
             }
         });
@@ -55,7 +62,13 @@ public class AddAccountController {
         this.view.setVisible(true);
     }
 
-    private boolean isValid() {
+    public AddAccountController(Users model, AccountDialog view, boolean fromManage) {
+        this.model = model;
+        this.view = view;
+        this.fromManage = fromManage;
+    }
+
+    public boolean isValid() {
         ArrayList<String> valid = new ArrayList<>();
         int phonePos = 0;
 
@@ -79,9 +92,20 @@ public class AddAccountController {
                                 valid.add(component.getName());
                             else
                                 fieldError = true;
+                        } else if (component.getName().equals("panUsername")) {
+                            if (!fromManage) {
+                                User userSearch = model.getUser(view.getTxtUsername().getText());
+                                if (userSearch == null || !userSearch.getUsername().equals(view.getTxtUsername().getText())) {
+                                    valid.add(component.getName());
+                                } else {
+                                    fieldError = true;
+                                }
+                            } else {
+                                valid.add(component.getName());
+                            }
                         } else {
                             String fieldValue = ((JTextField) field).getText();
-                            if (fieldValue.trim().length() < 5)
+                            if (fieldValue.trim().length() <= 2)
                                 fieldError = true;
                             else
                                 valid.add(component.getName());
@@ -91,7 +115,7 @@ public class AddAccountController {
             }
 
             if (fieldError) {
-                JOptionPane.showMessageDialog(null, "Error on field: " + component.getName().replace("pan", ""), "Field Value Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view, "Error on field: " + component.getName().replace("pan", ""), "Field Value Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 

@@ -4,6 +4,7 @@
 package delivery_system.views.account;
 
 import delivery_system.Main;
+import delivery_system.controller.AddAccountController;
 import delivery_system.model.restaurants.Restaurant;
 import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
@@ -19,12 +20,17 @@ import java.awt.Color;
 import javax.swing.border.MatteBorder;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.text.MaskFormatter;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
  * Delivery System
@@ -32,7 +38,7 @@ import java.util.ArrayList;
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @date Jan. 30, 2019
  */
-public class ManageUsers extends JDialog {
+public class ManageUsers extends JDialog implements ActionListener {
 
     private final JPanel contentPanel = new JPanel();
     private ArrayList<String> users = new ArrayList<>();
@@ -44,6 +50,9 @@ public class ManageUsers extends JDialog {
     private final JButton btnEdit;
     private final JButton btnDelete;
     private String mode;
+    private final AccountDialog accountDialog;
+    private ArrayList<String> usernames = new ArrayList<>();
+    private User selectedUser;
 
     /**
      * Create the dialog.
@@ -61,7 +70,7 @@ public class ManageUsers extends JDialog {
         contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
         getContentPane().add(contentPanel, BorderLayout.CENTER);
 
-        users.add("Select a user");
+        users.add("Select a user"); usernames.add("");
 
         {
             panel_1 = new JPanel();
@@ -80,21 +89,7 @@ public class ManageUsers extends JDialog {
                 cmbRestaurants.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        users.clear();
-                        users.add("Select a user");
-                        if (cmbRestaurants.getSelectedIndex() > 0)
-                            for (User user : Main.getUsers().getUsers()) {
-                                if (user.getRestaurants() != null)
-                                    for (Restaurant restaurant : user.getRestaurants()) {
-                                        if (restaurant.getName() == cmbRestaurants.getSelectedItem())
-                                            users.add(user.getName() + " (" + user.getUsername() + ")");
-                                    }
-                            }
-                        cmbUsers.setModel(new DefaultComboBoxModel(users.toArray()));
-                        cmbUsers.setEnabled(users.size() > 1);
-                        btnAdd.setEnabled(cmbRestaurants.getSelectedIndex() > 0);
-                        btnEdit.setEnabled(cmbUsers.getSelectedIndex() > 0);
-                        btnDelete.setEnabled(cmbUsers.getSelectedIndex() > 0);
+                        populateUsers();
                     }
                 });
             }
@@ -145,7 +140,8 @@ public class ManageUsers extends JDialog {
 //        comboBox.setEnabled(false);
 //        panel.add(comboBox);
 
-        AccountDialog accountDialog = new AccountDialog();
+        accountDialog = new AccountDialog();
+        AddAccountController addAccountController = new AddAccountController(Main.getUsers(), accountDialog, true);
         ImageIcon taken = new ImageIcon(getClass().getResource("/delivery_system/assets/icons8-cancel-24.png"));
         ImageIcon available = new ImageIcon(getClass().getResource("/delivery_system/assets/icons8-ok-24.png"));
 
@@ -164,38 +160,151 @@ public class ManageUsers extends JDialog {
         accountDialog.getOkButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                User newUser = new User(Roles.CLIENT, accountDialog.getTxtFname().getText() + " " + accountDialog.getTxtLname().getText(), accountDialog.getTxtUsername().getText(), accountDialog.getPasswordField().getPassword().toString(), accountDialog.getTxtEmail().getText(), accountDialog.getTxtAddress().getText(), accountDialog.getPhone());
                 switch (mode) {
                     case "add":
-                        String[] rolesAvailable = { Roles.MANAGER, Roles.RESTAURATEUR, Roles.DELIVERY_MAN };
-                        String selectedValue = (String) JOptionPane.showInputDialog( accountDialog, "Select the desired role for the user", "User role",
-                                JOptionPane.QUESTION_MESSAGE,
-                                null,
-                                rolesAvailable,
-                                rolesAvailable[ 0 ] );
-                        newUser.setAccessLvl(selectedValue);
-                        System.out.println(newUser.getAccessLvl());
+                        if (addAccountController.isValid()) {
+                            accountDialog.setVisible(false);
+                            User newUser = new User(Roles.CLIENT, accountDialog.getTxtFname().getText() + " " + accountDialog.getTxtLname().getText(), accountDialog.getTxtUsername().getText(), String.valueOf(accountDialog.getPasswordField().getPassword()), accountDialog.getTxtEmail().getText(), accountDialog.getTxtAddress().getText(), accountDialog.getPhone(), new Restaurant[] {Main.getRestaurants().getRestaurant(cmbRestaurants.getSelectedIndex() - 1)});
+                            String[] rolesAvailable = {Roles.MANAGER, Roles.RESTAURATEUR, Roles.DELIVERY_MAN};
+                            String selectedRole = (String) JOptionPane.showInputDialog(contentPanel, "Select the desired role for the user", "User role",
+                                    JOptionPane.QUESTION_MESSAGE,
+                                    null,
+                                    rolesAvailable,
+                                    rolesAvailable[0]);
+                            newUser.setAccessLvl(selectedRole);
+
+                            if (selectedRole.equals(Roles.DELIVERY_MAN)) {
+                                JFormattedTextField inputField =
+                                        null;
+                                try {
+                                    inputField = new JFormattedTextField(new MaskFormatter("#U#"));
+                                } catch (ParseException e1) {
+                                    e1.printStackTrace();
+                                }
+
+                                int response = JOptionPane.showOptionDialog(contentPanel,
+                                        new Object[] { "Enter a delivery area:\n", inputField },
+                                        "Enter delivery area",
+                                        JOptionPane.OK_CANCEL_OPTION,
+                                        JOptionPane.QUESTION_MESSAGE,
+                                        null, null, null);
+
+                                if (response == JOptionPane.OK_OPTION)
+                                    newUser.setDeliveryArea(new String[]{String.valueOf(inputField != null ? inputField.getValue() : null)});
+                            }
+
+                            Main.getUsers().addUser(newUser);
+                            populateUsers();
+
+                            accountDialog.clear();
+                        }
+                        break;
+                    case "edit":
+                        if (addAccountController.isValid()) {
+                            accountDialog.setVisible(false);
+                            User newUser = new User(Roles.CLIENT, accountDialog.getTxtFname().getText() + " " + accountDialog.getTxtLname().getText(), accountDialog.getTxtUsername().getText(), String.valueOf(accountDialog.getPasswordField().getPassword()), accountDialog.getTxtEmail().getText(), accountDialog.getTxtAddress().getText(), accountDialog.getPhone(), new Restaurant[] {Main.getRestaurants().getRestaurant(cmbRestaurants.getSelectedIndex() - 1)});
+                            String[] rolesAvailable = {Roles.MANAGER, Roles.RESTAURATEUR, Roles.DELIVERY_MAN};
+                            String selectedRole = (String) JOptionPane.showInputDialog(contentPanel, "Select the desired role for the user", "User role",
+                                    JOptionPane.QUESTION_MESSAGE,
+                                    null,
+                                    rolesAvailable,
+                                    rolesAvailable[0]);
+                            newUser.setAccessLvl(selectedRole);
+
+                            if (selectedRole.equals(Roles.DELIVERY_MAN)) {
+                                ArrayList<String> areas = new ArrayList<>();
+                                if (selectedUser.getDeliveryArea().length > 0)
+                                    Collections.addAll(areas, selectedUser.getDeliveryArea());
+
+                                JPanel panAreas = new JPanel();
+                                panAreas.setLayout(new FlowLayout(FlowLayout.CENTER));
+                                JTextArea currentAreas = new JTextArea("");
+                                if (selectedUser.getDeliveryArea().length > 0)
+                                    currentAreas = new JTextArea(Arrays.toString(areas.toArray()).substring(1, Arrays.toString(areas.toArray()).length() - 1));
+
+                                currentAreas.setEnabled(false);
+                                currentAreas.setColumns(16);
+
+                                JFormattedTextField inputField =
+                                        null;
+                                try {
+                                    inputField = new JFormattedTextField(new MaskFormatter("#U#"));
+                                    inputField.setColumns(3);
+                                } catch (ParseException e1) {
+                                    e1.printStackTrace();
+                                }
+                                panAreas.add(currentAreas);
+                                panAreas.add(inputField);
+
+                                JPanel panBtns = new JPanel();
+                                JButton btnAddArea = new JButton("Add");
+
+                                JFormattedTextField finalInputField = inputField;
+                                JTextArea finalCurrentAreas = currentAreas;
+                                btnAddArea.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        if (!finalInputField.getText().isEmpty()) {
+                                            boolean exists = false;
+                                            for (String devArea : areas)
+                                                if (finalCurrentAreas.getText().contains(finalInputField.getText()))
+                                                    exists = true;
+
+                                            if (areas.size() < 24 && !exists && finalCurrentAreas.getText().trim().length() < 16)
+                                                finalCurrentAreas.setText(finalCurrentAreas.getText() + (!finalCurrentAreas.getText().equals("") ? ", " : "") + finalInputField.getText());
+                                        }
+                                    }
+                                });
+
+                                JButton btnDelArea = new JButton("Delete");
+                                btnDelArea.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        if (!finalInputField.getText().isEmpty()) {
+                                            for (int i = 0; i < areas.size(); i++)
+                                                if (areas.get(i).equals(finalInputField.getText()))
+                                                    areas.remove(i);
+
+                                            finalCurrentAreas.setText(String.join(", ", areas));
+                                        }
+                                    }
+                                });
+                                panBtns.add(btnAddArea);
+                                panBtns.add(btnDelArea);
+
+                                int response = JOptionPane.showOptionDialog(contentPanel,
+                                        new Object[] { panAreas, panBtns },
+                                        "Enter delivery area",
+                                        JOptionPane.OK_CANCEL_OPTION,
+                                        JOptionPane.QUESTION_MESSAGE,
+                                        null, null, null);
+
+                                if (response == JOptionPane.OK_OPTION)
+                                    newUser.setDeliveryArea(finalCurrentAreas.getText().split(", "));
+                            }
+
+                            Main.getUsers().editUser(selectedUser, newUser);
+                            populateUsers();
+
+                            accountDialog.clear();
+                        }
                         break;
                 }
             }
         });
 
         btnAdd = new JButton("Add");
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mode = "add";
-                accountDialog.setVisible(true);
-            }
-        });
+        btnAdd.addActionListener(this);
         btnAdd.setEnabled(false);
         panel_2.add(btnAdd);
 
         btnEdit = new JButton("Edit");
+        btnEdit.addActionListener(this);
         btnEdit.setEnabled(false);
         panel_2.add(btnEdit);
 
         btnDelete = new JButton("Delete");
+        btnDelete.addActionListener(this);
         btnDelete.setEnabled(false);
         panel_2.add(btnDelete);
         contentPanel.setLayout(gl_contentPanel);
@@ -207,8 +316,74 @@ public class ManageUsers extends JDialog {
             {
                 JButton cancelButton = new JButton("Cancel");
                 cancelButton.setActionCommand("Cancel");
+                cancelButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dispose();
+                    }
+                });
                 buttonPane.add(cancelButton);
             }
+        }
+    }
+
+    private void populateUsers() {
+        users.clear(); usernames.clear();
+        users.add("Select a user"); usernames.add("");
+        if (cmbRestaurants.getSelectedIndex() > 0)
+            for (User user : Main.getUsers().getUsers()) {
+                if (user.getRestaurants() != null)
+                    for (Restaurant restaurant : user.getRestaurants()) {
+                        if (restaurant.getName() == cmbRestaurants.getSelectedItem()) {
+                            users.add(user.getName() + " (" + user.getUsername() + ")");
+                            usernames.add(user.getUsername());
+                        }
+                    }
+            }
+        cmbUsers.setModel(new DefaultComboBoxModel(users.toArray()));
+        cmbUsers.setEnabled(users.size() > 1);
+        btnAdd.setEnabled(cmbRestaurants.getSelectedIndex() > 0);
+        btnEdit.setEnabled(cmbUsers.getSelectedIndex() > 0);
+        btnDelete.setEnabled(cmbUsers.getSelectedIndex() > 0);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton btnFunc = (JButton) e.getSource();
+
+        switch (btnFunc.getText()) {
+            case "Add":
+                mode = "add";
+                accountDialog.clear();
+                this.accountDialog.setVisible(true);
+                break;
+            case "Edit":
+                mode = "edit";
+                selectedUser = Main.getUsers().getUser(usernames.get(cmbUsers.getSelectedIndex()));
+
+                String[] name = selectedUser.getName().split("\\s+");
+                String fname = name[0];
+                String lname = Arrays.stream(name, 1, name.length).collect(Collectors.joining(" "));
+
+                this.accountDialog.getLblAvailable().setVisible(false);
+
+                this.accountDialog.getTxtUsername().setText(selectedUser.getUsername());
+                this.accountDialog.getTxtUsername().setEnabled(false);
+                this.accountDialog.getTxtAddress().setText(selectedUser.getAddress());
+                this.accountDialog.getTxtEmail().setText(selectedUser.getEmail());
+                this.accountDialog.getTxtFname().setText(fname);
+                this.accountDialog.getTxtLname().setText(lname);
+
+                this.accountDialog.getTel1().setText(selectedUser.getPhone().substring(1,4));
+                this.accountDialog.getTel2().setText(selectedUser.getPhone().substring(6,9));
+                this.accountDialog.getTel3().setText(selectedUser.getPhone().substring(10,14));
+
+                this.accountDialog.setVisible(true);
+                break;
+            case "Delete":
+                Main.getUsers().delUser(Main.getUsers().getUser(usernames.get(cmbUsers.getSelectedIndex())));
+                populateUsers();
+                break;
         }
     }
 }

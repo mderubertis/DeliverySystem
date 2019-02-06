@@ -5,120 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c176737-fe88-47f6-a04c-bdc0d740fe20" name="Default" comment="- Added admin controller and view&#10;- Added test RestoManger InternalJFrame&#10;- Added activeUser field to Users&#10;- Added initial launch of admin panel with demo admin user">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/allclasses-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/allclasses-noframe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/constant-values.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/class-use/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/class-use/Main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/AddAccountController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/AddAccountController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/LoginController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/LoginController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/MainController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/MainController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/MenuController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/MenuController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/RestoMangeController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/RestoMangeController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/AddAccountController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/AddAccountController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/LoginController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/LoginController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/MainController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/MainController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/MenuController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/MenuController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/RestoMangeController.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/class-use/RestoMangeController.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/controller/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/Item.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/Item.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/Menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/class-use/Item.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/class-use/Item.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/class-use/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/class-use/Menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/menu/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/Order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/Orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/Orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/Status.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/Status.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/class-use/Order.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/class-use/Order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/class-use/Orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/class-use/Orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/class-use/Status.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/class-use/Status.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/orders/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/Restaurant.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/Restaurant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/Restaurants.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/Restaurants.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/class-use/Restaurant.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/class-use/Restaurant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/class-use/Restaurants.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/class-use/Restaurants.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/restaurants/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/Roles.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/Roles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/User.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/User.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/Users.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/Users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/class-use/Roles.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/class-use/Roles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/class-use/User.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/class-use/User.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/class-use/Users.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/class-use/Users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/model/users/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/MainView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/MainView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/MenuView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/MenuView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/RestoManageView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/RestoManageView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/AccountFrame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/AccountFrame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/AddAccountDialog.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/AddAccountDialog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/LoginView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/LoginView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/class-use/AccountFrame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/class-use/AccountFrame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/class-use/AddAccountDialog.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/class-use/AddAccountDialog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/class-use/LoginView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/class-use/LoginView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/account/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/class-use/MainView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/class-use/MainView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/class-use/MenuView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/class-use/MenuView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/class-use/RestoManageView.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/class-use/RestoManageView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/delivery_system/views/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-11.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-12.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-12.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-13.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-14.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-14.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-files/index-9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index-files/index-9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/overview-frame.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/overview-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/package-list" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/package-list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/javadoc/serialized-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delivery_system/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/delivery_system/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/delivery_system/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delivery_system/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delivery_system/controller/RestoMangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/controller/RestoMangeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/delivery_system/model/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/model/users/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delivery_system/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/views/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delivery_system/views/account/AccountFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/views/account/AccountFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/delivery_system/views/account/AddAccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/delivery_system/views/account/ManageUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/delivery_system/views/account/ManageUsers.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -137,8 +30,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/delivery_system/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+            <state relative-caret-position="364">
+              <caret line="65" column="164" selection-start-line="65" selection-start-column="160" selection-end-line="65" selection-end-column="164" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,63 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManageUsers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/ManageUsers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="214" selection-start-line="214" selection-end-line="214" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AccountDialog.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="18" />
-              <folding>
-                <element signature="e#359#397#0" expanded="true" />
-                <element signature="e#9830#9831#0" expanded="true" />
-                <element signature="e#9887#9888#0" expanded="true" />
-                <element signature="e#10807#10808#0" expanded="true" />
-                <element signature="e#10896#10897#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddAccountController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="77" column="77" selection-start-line="77" selection-start-column="77" selection-end-line="77" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="17" column="1" selection-start-line="17" selection-end-line="23" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/delivery_system/model/users/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="855">
-              <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MenuController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2745">
-              <caret line="209" column="21" selection-start-line="209" selection-start-column="8" selection-end-line="209" selection-end-column="21" />
+            <state relative-caret-position="-19">
+              <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -244,6 +85,7 @@
       <find>Restaurante</find>
       <find>Restauranteur</find>
       <find>Mod4Project</find>
+      <find>accountDialog</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -267,6 +109,7 @@
       <replace>getItems</replace>
       <replace>Restaurateur</replace>
       <replace>Delivery System</replace>
+      <replace>view</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -302,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/delivery_system/model/restaurants/Restaurants.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/MainView.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/model/orders/Status.java" />
-        <option value="$PROJECT_DIR$/src/delivery_system/model/users/Users.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/RestoManageView.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/controller/resto/RestoMangeController.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/account/LoginView.java" />
@@ -313,7 +155,6 @@
         <option value="$PROJECT_DIR$/src/delivery_system/model/restaurants/Restaurant.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/controller/MenuController.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/AcceptOrder.java" />
-        <option value="$PROJECT_DIR$/src/delivery_system/controller/RestoMangeController.java" />
         <option value="$PROJECT_DIR$/docs/javadoc/constant-values.html" />
         <option value="$PROJECT_DIR$/src/delivery_system/model/orders/Orders.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/model/LoginModel.java" />
@@ -321,15 +162,17 @@
         <option value="$PROJECT_DIR$/src/delivery_system/model/menu/Item.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/OrderView.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/model/orders/Order.java" />
-        <option value="$PROJECT_DIR$/src/delivery_system/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/src/delivery_system/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/account/AddAccountDialog.java" />
-        <option value="$PROJECT_DIR$/src/delivery_system/model/users/User.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/Main.java" />
+        <option value="$PROJECT_DIR$/src/delivery_system/model/users/User.java" />
+        <option value="$PROJECT_DIR$/src/delivery_system/model/users/Users.java" />
+        <option value="$PROJECT_DIR$/src/delivery_system/controller/RestoMangeController.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/account/ManageUsers.java" />
-        <option value="$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java" />
         <option value="$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java" />
+        <option value="$PROJECT_DIR$/src/delivery_system/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java" />
+        <option value="$PROJECT_DIR$/src/delivery_system/controller/MainController.java" />
       </list>
     </option>
   </component>
@@ -708,7 +551,7 @@
       <workItem from="1549053849242" duration="6272000" />
       <workItem from="1549151510012" duration="11090000" />
       <workItem from="1549380452745" duration="311000" />
-      <workItem from="1549380782409" duration="426000" />
+      <workItem from="1549380782409" duration="16035000" />
     </task>
     <task id="LOCAL-00001">
       <created>1547767446531</created>
@@ -723,7 +566,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162517000" />
+    <option name="totallyTimeSpent" value="178126000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -740,6 +583,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32974428" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32844242" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -747,11 +591,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295711" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17155756" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17155756" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12193823" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12193823" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32974428" />
       <window_info anchor="right" id="SciView" order="4" />
@@ -760,8 +604,7 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39954853" />
       <window_info anchor="right" id="UML design tool window" order="3" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="PlantUML" order="3" />
@@ -786,7 +629,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="16" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1272,13 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/RestoMangeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5440">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="45" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/delivery_system/model/orders/Orders.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1290,13 +1126,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1717">
           <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/model/users/Users.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -1321,13 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2745">
-          <caret line="209" column="21" selection-start-line="209" selection-start-column="8" selection-end-line="209" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/delivery_system/views/OrderView.java" />
     <entry file="file://$PROJECT_DIR$/src/delivery_system/model/orders/Order.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1343,69 +1165,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/model/users/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="152" column="52" selection-start-line="152" selection-start-column="52" selection-end-line="152" selection-end-column="52" />
+          <folding>
+            <element signature="method#addRestaurants#0;class#User#0" />
+            <element signature="method#addDeiveryArea#0;class#User#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/model/users/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="420" column="20" selection-start-line="420" selection-start-column="20" selection-end-line="420" selection-end-column="20" />
+          <folding>
+            <element signature="e#388#426#0" expanded="true" />
+            <element signature="e#9830#9831#0" expanded="true" />
+            <element signature="e#9887#9888#0" expanded="true" />
+            <element signature="e#10807#10808#0" expanded="true" />
+            <element signature="e#10896#10897#0" expanded="true" />
+            <element signature="e#11913#11914#0" expanded="true" />
+            <element signature="e#11940#11941#0" expanded="true" />
+            <element signature="e#11975#11976#0" expanded="true" />
+            <element signature="e#12002#12003#0" expanded="true" />
+            <element signature="e#12037#12038#0" expanded="true" />
+            <element signature="e#12064#12065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        <state relative-caret-position="195">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/AccountFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
+        <state relative-caret-position="-136">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/ManageUsers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="204" column="441" selection-start-line="204" selection-start-column="28" selection-end-line="204" selection-end-column="458" />
+          <folding>
+            <element signature="e#2791#2792#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#16380#16381#0" expanded="true" />
+            <element signature="e#16437#16438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/RestoMangeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="217" column="86" selection-start-line="217" selection-start-column="43" selection-end-line="217" selection-end-column="86" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/delivery_system/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+        <state relative-caret-position="364">
+          <caret line="65" column="164" selection-start-line="65" selection-start-column="160" selection-end-line="65" selection-end-column="164" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/model/users/User.java">
+    <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+        <state relative-caret-position="657">
+          <caret line="209" column="21" selection-start-line="209" selection-start-column="8" selection-end-line="209" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="17" column="1" selection-start-line="17" selection-end-line="23" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/AccountDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="e#359#397#0" expanded="true" />
-            <element signature="e#9830#9831#0" expanded="true" />
-            <element signature="e#9887#9888#0" expanded="true" />
-            <element signature="e#10807#10808#0" expanded="true" />
-            <element signature="e#10896#10897#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/views/account/ManageUsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="214" selection-start-line="214" selection-end-line="214" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/delivery_system/controller/AddAccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="77" column="77" selection-start-line="77" selection-start-column="77" selection-end-line="77" selection-end-column="77" />
+        <state relative-caret-position="-19">
+          <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,7 @@
 package delivery_system.model.users;
 
 import delivery_system.model.restaurants.Restaurant;
+import delivery_system.model.restaurants.Restaurants;
 
 import java.util.Arrays;
 
@@ -132,5 +133,27 @@ public class User {
 
     public void setRestaurants(Restaurant[] restaurants) {
         this.restaurants = restaurants;
+    }
+
+    public void addRestaurant(Restaurant restaurant) {
+        Restaurant[] currentRestaurants = this.restaurants;
+        this.restaurants = new Restaurant[this.restaurants.length + 1];
+        System.arraycopy(currentRestaurants, 0, this.restaurants, 0, currentRestaurants.length);
+        this.restaurants[this.restaurants.length - 1] = restaurant;
+    }
+
+    public String[] getDeliveryArea() {
+        return deliveryArea;
+    }
+
+    public void setDeliveryArea(String[] deliveryArea) {
+        this.deliveryArea = deliveryArea;
+    }
+
+    public void addDeiveryArea(String deliveryArea) {
+        String[] currentAreas = this.deliveryArea;
+        this.deliveryArea = new String[this.deliveryArea.length + 1];
+        System.arraycopy(currentAreas, 0, this.deliveryArea, 0, currentAreas.length);
+        this.deliveryArea[this.restaurants.length - 1] = deliveryArea;
     }
 }

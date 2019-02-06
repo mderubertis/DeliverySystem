@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 
 public class LoginController {
-    Users model = new Users();
+    Users model;
     LoginView view;
 
     public LoginController(Users model, LoginView view) {

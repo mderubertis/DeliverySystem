@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.Arrays;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -369,6 +370,33 @@ public class AccountDialog extends JDialog {
     }
 
     /**
+     * Gets tel 1.
+     *
+     * @return the tel 1
+     */
+    public JTextField getTel1() {
+        return tel1;
+    }
+
+    /**
+     * Gets tel 2.
+     *
+     * @return the tel 2
+     */
+    public JTextField getTel2() {
+        return tel2;
+    }
+
+    /**
+     * Gets tel 3.
+     *
+     * @return the tel 3
+     */
+    public JTextField getTel3() {
+        return tel3;
+    }
+
+    /**
      * Sets title string.
      *
      * @param title the title
@@ -377,5 +405,24 @@ public class AccountDialog extends JDialog {
         this.title = title;
         this.lblViewTitle.setText(title);
         setTitle(title);
+    }
+
+    /**
+     * Clear.
+     */
+    public void clear() {
+        for (Component component : getPanForm().getComponents()) {
+            if (component instanceof JPanel) {
+                for (Component field : ((JPanel) component).getComponents()) {
+                    if (field instanceof JTextField) {
+                        ((JTextField) field).setText("");
+
+                    }
+
+                    field.setVisible(true);
+                    field.setEnabled(true);
+                }
+            }
+        }
     }
 }
