@@ -59,7 +59,7 @@ public class MainController implements ActionListener {
             e.printStackTrace();
         }
 
-        // Set title with user info
+        // Set user
         User activeUser = model.getActiveUser();
 
         // Setup menubar based on permissions
@@ -98,6 +98,9 @@ public class MainController implements ActionListener {
             case Roles.RESTAURATEUR:
                 setupChefMenuBar();
                 role_readable = "restaurateur";
+                break;
+            case Roles.CLIENT:
+                role_readable = "client";
                 break;
         }
 
