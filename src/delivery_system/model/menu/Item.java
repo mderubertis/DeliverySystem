@@ -44,8 +44,12 @@ public class Item {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+
+
+    public Item setQuantity(double quantity) {
         this.quantity = quantity;
+
+        return this;
     }
 
     @Override

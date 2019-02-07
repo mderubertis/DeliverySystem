@@ -21,8 +21,9 @@ public class Order {
     private Item[] items;
     private String phone;
     private String deliveryArea;
+    private String deliveryAddress;
 
-    public Order(String status, String deliveryDate, String deliveryTime, Restaurant restaurant, Item[] items, String phone, String deliveryArea) {
+    public Order(String status, String deliveryDate, String deliveryTime, Restaurant restaurant, Item[] items, String phone, String deliveryArea, String deliveryAddress) {
         this.status = status;
         this.deliveryDate = deliveryDate;
         this.deliveryTime = deliveryTime;
@@ -30,6 +31,7 @@ public class Order {
         this.items = items;
         this.phone = phone;
         this.deliveryArea = deliveryArea;
+        this.deliveryAddress = deliveryAddress;
     }
 
     public String getStatus() {
@@ -60,10 +62,6 @@ public class Order {
         return deliveryArea;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
         return "Order{" +
@@ -74,6 +72,16 @@ public class Order {
                 ", items=" + Arrays.toString(items) +
                 ", phone='" + phone + '\'' +
                 ", deliveryArea='" + deliveryArea + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
                 '}';
     }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

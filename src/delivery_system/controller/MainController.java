@@ -4,10 +4,7 @@ import delivery_system.Main;
 import delivery_system.model.users.Roles;
 import delivery_system.model.users.User;
 import delivery_system.model.users.Users;
-import delivery_system.views.MainView;
-import delivery_system.views.MenuView;
-import delivery_system.views.OrderView;
-import delivery_system.views.RestoManageView;
+import delivery_system.views.*;
 import delivery_system.views.account.ManageUsers;
 
 import javax.swing.*;
@@ -25,6 +22,8 @@ import java.net.URL;
 public class MainController implements ActionListener {
     private final OrderView ordersView;
     private final OrderController ordersController;
+    private final DeliveryView deliveryView;
+    private final DeliveryController deliveryController;
     private MenuController menuController;
     private MenuView menuView;
     Users model;
@@ -34,20 +33,16 @@ public class MainController implements ActionListener {
     private JMenuItem mntmCreate;
     private JMenuItem mntmEdit;
     private JMenuItem mntmDelete;
-    private JMenuItem mntmCreate_menu;
     private JMenuItem mntmEdit_menu;
     private JMenuItem mntmQuit;
     private JMenuItem mntmDisconnect;
-    private JMenuItem mntmDelete_menu;
-    private JMenuItem mntmCreate_dm;
-    private JMenuItem mntmEdit_dm;
-    private JMenuItem mntmDelete_dm;
     private final RestoManageView restoManageView;
     private final RestoMangeController restoMangeController;
     private final JMenuBar menuBar;
     private JMenuItem mntmView_orders;
     private JMenu mnOrders;
     private JMenuItem mntmUserMan_resto;
+    private JMenuItem mntmView_dm;
 
     public MainController(Users model, MainView view) {
         this.model = model;
@@ -117,6 +112,10 @@ public class MainController implements ActionListener {
         ordersController = new OrderController(Main.getOrders(), ordersView);
         view.getContentPane().add(ordersView);
 
+        deliveryView = new DeliveryView();
+        deliveryController = new DeliveryController(Main.getOrders(), deliveryView);
+        view.getContentPane().add(deliveryView);
+
         // View setup
         view.setTitle("Food Delivery System - [Logged in as " + activeUser.getUsername() + "] (" + role_readable + ")");
         view.setVisible(true);
@@ -157,42 +156,18 @@ public class MainController implements ActionListener {
         JMenu mnMenu = new JMenu("Menu");
         menuBar.add(mnMenu);
 
-        mntmCreate_menu = new JMenuItem("Create");
-        mntmCreate_menu.addActionListener(this);
-        mnMenu.add(mntmCreate_menu);
-
         mntmEdit_menu = new JMenuItem("Edit");
         mntmEdit_menu.addActionListener(this);
         mnMenu.add(mntmEdit_menu);
-
-        mntmDelete_menu = new JMenuItem("Delete");
-        mnMenu.add(mntmDelete_menu);
-
-        JMenu mnDelivery = new JMenu("Delivery Man");
-        menuBar.add(mnDelivery);
-
-        mntmCreate_dm = new JMenuItem("Create");
-        mnDelivery.add(mntmCreate_dm);
-
-        mntmEdit_dm = new JMenuItem("Edit");
-        mnDelivery.add(mntmEdit_dm);
-
-        mntmDelete_dm = new JMenuItem("Delete");
-        mnDelivery.add(mntmDelete_dm);
     }
 
     public void setupDeliveryManMenuBar() {
-        JMenu mnDelivery = new JMenu("Delivery Man");
+        JMenu mnDelivery = new JMenu("Deliveries");
         menuBar.add(mnDelivery);
 
-        mntmCreate_dm = new JMenuItem("View");
-        mnDelivery.add(mntmCreate_dm);
-
-        mntmEdit_dm = new JMenuItem("Accept");
-        mnDelivery.add(mntmEdit_dm);
-
-        mntmDelete_dm = new JMenuItem("End");
-        mnDelivery.add(mntmDelete_dm);
+        mntmView_dm = new JMenuItem("View");
+        mntmView_dm.addActionListener(this);
+        mnDelivery.add(mntmView_dm);
     }
 
     public void setupManagerMenuBar() {
@@ -210,14 +185,8 @@ public class MainController implements ActionListener {
         JMenu mnMenu = new JMenu("Menu");
         menuBar.add(mnMenu);
 
-        mntmCreate_menu = new JMenuItem("Create");
-        mnMenu.add(mntmCreate_menu);
-
         mntmEdit_menu = new JMenuItem("Edit");
         mnMenu.add(mntmEdit_menu);
-
-        mntmDelete_menu = new JMenuItem("Delete");
-        mnMenu.add(mntmDelete_menu);
 
         mnOrders = new JMenu("Orders");
         menuBar.add(mnOrders);
@@ -242,6 +211,7 @@ public class MainController implements ActionListener {
 
             }
 
+            // COMMON
             if (menuItem == mntmDisconnect) {
                 Main.logout();
                 view.dispose();
@@ -251,6 +221,7 @@ public class MainController implements ActionListener {
                 Main.shutdown();
             }
 
+            // ADMIN
             if (menuItem == mntmCreate || menuItem == mntmEdit || menuItem == mntmDelete || menuItem == mntmUserMan_resto) {
 
                 final JComboBox combo = new JComboBox<>(restos);
@@ -287,14 +258,19 @@ public class MainController implements ActionListener {
                 }
             }
 
-            if (menuItem == mntmCreate_menu || menuItem == mntmEdit_menu || menuItem == mntmDelete_menu) {
+            if (menuItem == mntmEdit_menu) {
                 menuController.showView();
             }
-
 
             // RESTAURATEUR
             if (menuItem == mntmView_orders) {
                 ordersController.showView();
+            }
+
+            // DELIVERY GUY
+            if (menuItem == mntmView_dm) {
+                System.out.println("deliMange");
+                deliveryController.showView();
             }
         }
     }

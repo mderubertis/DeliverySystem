@@ -70,9 +70,11 @@ public class Main {
         users.addUser(new User(Roles.RESTAURATEUR, "Chef 2", "chef_mcd", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[] {restaurants.getRestaurant(0)}));
 
         // Add default orders
-        orders.addOrder(new Order(Status.WAITING, "2019/02/03", "12:00", restaurants.getRestaurant(1), new Item[] {new Item(amirMenu.getItem(0).getName(), amirMenu.getItem(0).getPrice(), 2), amirMenu.getItem(2)}, "(514) 935-7494", "3E1"));
-        orders.addOrder(new Order(Status.ACCEPTED, "2019/02/14", "13:00", restaurants.getRestaurant(1), new Item[] {amirMenu.getItem(0)}, "(514) 935-7494", "3E1"));
-        orders.addOrder(new Order(Status.WAITING, "2019/02/16", "16:00", restaurants.getRestaurant(0), new Item[] {mcdMenu.getItem(0)}, "(514) 935-7494", "3E1"));
+        orders.addOrder(new Order(Status.WAITING, "2019/02/03", "12:00", restaurants.getRestaurant(1), new Item[] {new Item(amirMenu.getItem(0).getName(), amirMenu.getItem(0).getPrice(), 2), amirMenu.getItem(2)}, "(514) 935-7494", "3E1", "1616 René-Lévesque Blvd W, Montreal, QC"));
+        orders.addOrder(new Order(Status.ACCEPTED, "2019/02/14", "13:00", restaurants.getRestaurant(1), new Item[] {amirMenu.getItem(0).setQuantity(15)}, "(514) 935-7494", "3E1", "1616 René-Lévesque Blvd W, Montreal, QC"));
+        orders.addOrder(new Order(Status.WAITING, "2019/02/16", "16:00", restaurants.getRestaurant(0), new Item[] {mcdMenu.getItem(0).setQuantity(10)}, "(514) 935-7494", "3E1", "1616 René-Lévesque Blvd W, Montreal, QC"));
+        orders.addOrder(new Order(Status.ACCEPTED, "2019/02/16", "17:00", restaurants.getRestaurant(0), new Item[] {mcdMenu.getItem(1).setQuantity(2), mcdMenu.getItem(0).setQuantity(3), mcdMenu.getItem(2).setQuantity(5)}, "(514) 935-7494", "3E1", "1616 René-Lévesque Blvd W, Montreal, QC"));
+        orders.addOrder(new Order(Status.READY, "2019/02/16", "19:00", restaurants.getRestaurant(0), new Item[] {mcdMenu.getItem(1).setQuantity(2), mcdMenu.getItem(0).setQuantity(3), mcdMenu.getItem(2).setQuantity(5)}, "(514) 935-7494", "3E1", "1616 René-Lévesque Blvd W, Montreal, QC"));
 
         // Launch account/new user window
         accountFrame = new AccountFrame(users);
