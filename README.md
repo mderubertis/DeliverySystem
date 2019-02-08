@@ -6,7 +6,7 @@
 
 ### Version 1 (Specification v8)
 
-#### Georgealdly Boursiquot
+#### Specification by: Georgealdly Boursiquot
 
 #### 16 - Jan - 19
 
