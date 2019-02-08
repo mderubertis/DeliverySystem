@@ -9,6 +9,7 @@ package delivery_system.model.orders;
  */
 public class Status {
     public static final String WAITING = "waiting";
+    public static final String ACCEPTED_CHEF = "accepted in kitchen";
     public static final String ACCEPTED = "accepted";
     public static final String READY = "READY";
     public static final String DELIVERED = "delivered";

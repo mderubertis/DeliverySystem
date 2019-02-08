@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  *
  * @author Michael De Rubertis <m.derubertis@hotmail.com>
  * @version 1.0
- * @date 2019-01-21
+ * @date 2019 -01-21
  */
 public class MainController implements ActionListener {
     private final OrderView ordersView = new OrderView();
@@ -27,7 +27,13 @@ public class MainController implements ActionListener {
     private final ClientOrderController clientOrderController;
     private MenuController menuController;
     private MenuView menuView = new MenuView();
+    /**
+     * The Model.
+     */
     Users model;
+    /**
+     * The View.
+     */
     MainView view;
 
     private String role;
@@ -49,6 +55,12 @@ public class MainController implements ActionListener {
     private JMenuItem mntmNewOrder_C;
     private JMenuItem mntmOrderHist_c;
 
+    /**
+     * Instantiates a new Main controller.
+     *
+     * @param model the model
+     * @param view  the view
+     */
     public MainController(Users model, MainView view) {
         this.model = model;
         this.view = view;
@@ -135,6 +147,9 @@ public class MainController implements ActionListener {
         mnOrders.add(mntmView_orders);
     }
 
+    /**
+     * Sets admin menu bar.
+     */
     public void setupAdminMenuBar() {
         JMenu mnRestaurant = new JMenu("Restaurant");
         menuBar.add(mnRestaurant);
@@ -166,6 +181,9 @@ public class MainController implements ActionListener {
         mnMenu.add(mntmEdit_menu);
     }
 
+    /**
+     * Sets delivery man menu bar.
+     */
     public void setupDeliveryManMenuBar() {
         JMenu mnDelivery = new JMenu("Deliveries");
         menuBar.add(mnDelivery);
@@ -175,6 +193,9 @@ public class MainController implements ActionListener {
         mnDelivery.add(mntmView_dm);
     }
 
+    /**
+     * Sets manager menu bar.
+     */
     public void setupManagerMenuBar() {
         JMenu mnRestaurant = new JMenu("Restaurant");
         menuBar.add(mnRestaurant);
@@ -200,6 +221,9 @@ public class MainController implements ActionListener {
         mnOrders.add(mntmView_orders);
     }
 
+    /**
+     * Sets client menu bar.
+     */
     public void setupClientMenuBar() {
         JMenu mnAccount = new JMenu("Account");
         menuBar.add(mnAccount);

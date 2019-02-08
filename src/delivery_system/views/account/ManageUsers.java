@@ -174,23 +174,70 @@ public class ManageUsers extends JDialog implements ActionListener {
                             newUser.setAccessLvl(selectedRole);
 
                             if (selectedRole.equals(Roles.DELIVERY_MAN)) {
+                                ArrayList<String> areas = new ArrayList<>();
+
+                                JPanel panAreas = new JPanel();
+                                panAreas.setLayout(new FlowLayout(FlowLayout.CENTER));
+                                JTextArea currentAreas = new JTextArea("");
+                                currentAreas.setEnabled(false);
+                                currentAreas.setColumns(16);
+
                                 JFormattedTextField inputField =
                                         null;
                                 try {
                                     inputField = new JFormattedTextField(new MaskFormatter("#U#"));
+                                    inputField.setColumns(3);
                                 } catch (ParseException e1) {
                                     e1.printStackTrace();
                                 }
+                                panAreas.add(currentAreas);
+                                panAreas.add(inputField);
+
+                                JPanel panBtns = new JPanel();
+                                JButton btnAddArea = new JButton("Add");
+
+                                JFormattedTextField finalInputField = inputField;
+                                JTextArea finalCurrentAreas = currentAreas;
+                                btnAddArea.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        if (!finalInputField.getText().isEmpty()) {
+                                            boolean exists = false;
+                                            for (String devArea : areas)
+                                                if (finalCurrentAreas.getText().contains(finalInputField.getText()))
+                                                    exists = true;
+
+                                            if (areas.size() < 24 && !exists && finalCurrentAreas.getText().trim().length() < 16)
+                                                finalCurrentAreas.setText(finalCurrentAreas.getText() + (!finalCurrentAreas.getText().equals("") ? ", " : "") + finalInputField.getText());
+                                        }
+                                    }
+                                });
+
+                                JButton btnDelArea = new JButton("Delete");
+                                btnDelArea.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent e) {
+                                        if (!finalInputField.getText().isEmpty()) {
+                                            for (int i = 0; i < areas.size(); i++)
+                                                if (areas.get(i).equals(finalInputField.getText()))
+                                                    areas.remove(i);
+
+                                            finalCurrentAreas.setText(String.join(", ", areas));
+                                        }
+                                    }
+                                });
+                                panBtns.add(btnAddArea);
+                                panBtns.add(btnDelArea);
 
                                 int response = JOptionPane.showOptionDialog(contentPanel,
-                                        new Object[] { "Enter a delivery area:\n", inputField },
+                                        new Object[] { panAreas, panBtns },
                                         "Enter delivery area",
                                         JOptionPane.OK_CANCEL_OPTION,
                                         JOptionPane.QUESTION_MESSAGE,
                                         null, null, null);
 
                                 if (response == JOptionPane.OK_OPTION)
-                                    newUser.setDeliveryArea(new String[]{String.valueOf(inputField != null ? inputField.getValue() : null)});
+                                    newUser.setDeliveryArea(finalCurrentAreas.getText().split(", "));
                             }
 
                             Main.getUsers().addUser(newUser);

@@ -93,7 +93,7 @@ class OrderController {
         this.view.getBtnAcceptOrder().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentOrder.setStatus(Status.ACCEPTED);
+                currentOrder.setStatus(Status.ACCEPTED_CHEF);
                 viewUpdate();
             }
         });
@@ -123,7 +123,7 @@ class OrderController {
                 view.getBtnAcceptOrder().setEnabled(true);
                 view.getBtnOrderReady().setEnabled(false);
                 break;
-            case Status.ACCEPTED:
+            case Status.ACCEPTED_CHEF:
                 view.getBtnAcceptOrder().setEnabled(false);
                 view.getBtnOrderReady().setEnabled(true);
                 break;

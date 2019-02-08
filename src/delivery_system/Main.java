@@ -66,6 +66,7 @@ public class Main {
         users.addUser(new User(Roles.ADMINISTRATOR, "Administrator", "admin", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494"));
         users.addUser(new User(Roles.MANAGER, "Manager", "manager1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[]{restaurants.getRestaurant(0)}));
         users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 1", "deli1", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[]{restaurants.getRestaurant(0)}, new String[]{"3E1", "1K1"}));
+        users.addUser(new User(Roles.DELIVERY_MAN, "Delivery Man 2", "deli2", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[]{restaurants.getRestaurant(1)}, new String[]{"3E1", "1K1"}));
         users.addUser(new User(Roles.RESTAURATEUR, "Chef 1", "chef_amir", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[]{restaurants.getRestaurant(1)}));
         users.addUser(new User(Roles.RESTAURATEUR, "Chef 2", "chef_mcd", "123", "admin@example.com", "1616 René-Lévesque Blvd W, Montreal, QC", "(514) 935-7494", new Restaurant[]{restaurants.getRestaurant(0)}));
         users.addUser(new User(Roles.CLIENT, "Client Test", "client1", "123", "client@example.com", "406-8580 Maurice Duplessis", "(514) 892-5005"));
