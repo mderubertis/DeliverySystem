@@ -64,13 +64,20 @@ public class DeliveryController {
             public void actionPerformed(ActionEvent e) {
                 JButton btn = (JButton) e.getSource();
 
+                int operation = -1;
+
                 if (btn == view.getBtnAccept()) {
-                    currentOrder.setStatus(Status.ACCEPTED);
+                    operation = 0;
                 } else if (btn == view.getBtnDelivered()) {
-                    currentOrder.setStatus(Status.DELIVERED);
+                    operation = 1;
                 }
 
-                updateView();
+                int response = JOptionPane.showConfirmDialog(view, "Are you sure you want to " + (operation == 0 ? "accept" : "confirm delivery of" ) + " this order?", "Confirm action", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (response == JOptionPane.YES_OPTION) {
+                    currentOrder.setStatus((operation == 0 ? Status.ACCEPTED : Status.DELIVERED));
+                    updateView();
+                }
+
             }
         };
 

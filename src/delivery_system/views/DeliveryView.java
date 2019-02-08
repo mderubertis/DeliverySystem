@@ -48,38 +48,31 @@ public class DeliveryView extends JInternalFrame{
         table.setShowVerticalLines(false);
         table.setEnabled(false);
         GroupLayout groupLayout = new GroupLayout(getContentPane());
-        groupLayout.setHorizontalGroup(
-                groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addGroup(groupLayout.createSequentialGroup()
-                                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-                                        .addGroup(groupLayout.createSequentialGroup()
-                                                .addGap(35)
-                                                .addComponent(lbl_ViewDelivery_Order))
-                                        .addGroup(groupLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(listOrders, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-                                        .addComponent(lbl_ViewDelivery, GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                                        .addComponent(table, GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
-                                .addContainerGap())
-                        .addComponent(panel, GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-        );
-        groupLayout.setVerticalGroup(
-                groupLayout.createParallelGroup(Alignment.LEADING)
-                        .addGroup(groupLayout.createSequentialGroup()
-                                .addGap(10)
-                                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-                                        .addComponent(lbl_ViewDelivery_Order)
-                                        .addComponent(lbl_ViewDelivery, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-                                        .addComponent(listOrders, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                                        .addComponent(table, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
-                                .addPreferredGap(ComponentPlacement.RELATED)
-                                .addComponent(panel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-        );
+        groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+                .createSequentialGroup()
+                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+                        .addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(listOrders,
+                                GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(groupLayout.createSequentialGroup().addGap(50).addComponent(lbl_ViewDelivery_Order)))
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+                        .addComponent(table, GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                        .addComponent(lbl_ViewDelivery, GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
+                .addContainerGap())
+                .addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup().addContainerGap().addComponent(panel,
+                        GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)));
+        groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
+                .createSequentialGroup().addGap(10)
+                .addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+                        .addComponent(lbl_ViewDelivery, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+                                Short.MAX_VALUE)
+                        .addComponent(lbl_ViewDelivery_Order))
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+                        .addComponent(listOrders, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(table, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addComponent(panel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)));
 
         btnAccept = new JButton("Accept");
         btnAccept.setEnabled(false);

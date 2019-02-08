@@ -10,7 +10,6 @@ import delivery_system.views.account.ManageUsers;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 
 /**
  * Delivery System
@@ -20,12 +19,14 @@ import java.net.URL;
  * @date 2019-01-21
  */
 public class MainController implements ActionListener {
-    private final OrderView ordersView;
+    private final OrderView ordersView = new OrderView();
     private final OrderController ordersController;
-    private final DeliveryView deliveryView;
+    private final DeliveryView deliveryView = new DeliveryView();
     private final DeliveryController deliveryController;
+    private final ClientOrder clientOrder = new ClientOrder();
+    private final ClientOrderController clientOrderController;
     private MenuController menuController;
-    private MenuView menuView;
+    private MenuView menuView = new MenuView();
     Users model;
     MainView view;
 
@@ -36,13 +37,17 @@ public class MainController implements ActionListener {
     private JMenuItem mntmEdit_menu;
     private JMenuItem mntmQuit;
     private JMenuItem mntmDisconnect;
-    private final RestoManageView restoManageView;
+    private final RestoManageView restoManageView = new RestoManageView();
     private final RestoMangeController restoMangeController;
     private final JMenuBar menuBar;
     private JMenuItem mntmView_orders;
     private JMenu mnOrders;
     private JMenuItem mntmUserMan_resto;
     private JMenuItem mntmView_dm;
+    private JMenuItem mntmEdit_c;
+    private JMenuItem mntmClose;
+    private JMenuItem mntmNewOrder_C;
+    private JMenuItem mntmOrderHist_c;
 
     public MainController(Users model, MainView view) {
         this.model = model;
@@ -95,26 +100,26 @@ public class MainController implements ActionListener {
                 role_readable = "restaurateur";
                 break;
             case Roles.CLIENT:
+                setupClientMenuBar();
                 role_readable = "client";
                 break;
         }
 
         // Create child views but hidden, and visible on menu item click
-        restoManageView = new RestoManageView();
         restoMangeController = new RestoMangeController(Main.getRestaurants(), restoManageView);
         view.getContentPane().add(restoManageView);
 
-        menuView = new MenuView();
         menuController = new MenuController(Main.getRestaurants(), menuView);
         view.getContentPane().add(menuView);
 
-        ordersView = new OrderView();
         ordersController = new OrderController(Main.getOrders(), ordersView);
         view.getContentPane().add(ordersView);
 
-        deliveryView = new DeliveryView();
         deliveryController = new DeliveryController(Main.getOrders(), deliveryView);
         view.getContentPane().add(deliveryView);
+
+        clientOrderController = new ClientOrderController(Main.getRestaurants(), clientOrder);
+        view.getContentPane().add(clientOrder);
 
         // View setup
         view.setTitle("Food Delivery System - [Logged in as " + activeUser.getUsername() + "] (" + role_readable + ")");
@@ -195,6 +200,30 @@ public class MainController implements ActionListener {
         mnOrders.add(mntmView_orders);
     }
 
+    public void setupClientMenuBar() {
+        JMenu mnAccount = new JMenu("Account");
+        menuBar.add(mnAccount);
+
+        mntmEdit_c = new JMenuItem("Edit");
+        mntmEdit_c.addActionListener(this);
+        mnAccount.add(mntmEdit_c);
+
+        mntmClose = new JMenuItem("Close");
+        mntmClose.addActionListener(this);
+        mnAccount.add(mntmClose);
+
+        JMenu mnOrder = new JMenu("Order");
+        menuBar.add(mnOrder);
+
+        mntmNewOrder_C = new JMenuItem("New");
+        mntmNewOrder_C.addActionListener(this);
+        mnOrder.add(mntmNewOrder_C);
+
+        mntmOrderHist_c = new JMenuItem("History");
+        mntmOrderHist_c.addActionListener(this);
+        mnOrder.add(mntmOrderHist_c);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().getClass().getSimpleName().equals("JMenuItem")) {
@@ -269,8 +298,12 @@ public class MainController implements ActionListener {
 
             // DELIVERY GUY
             if (menuItem == mntmView_dm) {
-                System.out.println("deliMange");
                 deliveryController.showView();
+            }
+
+            // CLIENT
+            if (menuItem == mntmNewOrder_C) {
+                clientOrderController.showView();
             }
         }
     }
